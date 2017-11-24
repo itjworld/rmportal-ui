@@ -1,0 +1,95 @@
+<div class="card filter top-margin">
+        <h4 class="card-header"><b>Filter</b></h4>
+
+      <div class="card-block">      
+
+        <div class="collapse-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger accordion-toggle" href="#collapseOne">
+                                Locality</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                            <div class="checkbox checkbox-primary" *ngFor="let l of location">
+                                    <label><input type="checkbox"  value="{{l.id}}" [(ngModel)]="l.checked" (change)="selectLocation()" >{{l.name}}</label>
+                             </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseTwo">Price</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                            <div><b>Price:</b>&nbsp; <span style="color:#848484">Rs.Min - {{dispalyPrice}}</span></div>
+                            <br />
+                            <div id="slidecontainer">
+                                    <input type="range" min="{{min}}" max="{{max}}" step="{{step}}" [(ngModel)]="price" class="slider" id="price" (change)="selectPrice($event)" (input)="changePrice($event)">
+                             </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseThree">Gender</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                                <div class="checkbox checkbox-primary" *ngFor="let g of gender">
+                                        <label><input type="checkbox" [(ngModel)]="g.checked" value="{{g.id}}" (change)="selectGender($event)" >{{g.name}}</label>
+                                </div>
+                                      
+                                      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFourth">
+                            <h4 class="panel-title">
+                                <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFourth">Air Conditioner</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFourth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourth">
+                            <div class="panel-body">
+                                    <div class="checkbox checkbox-primary" *ngFor="let a of airCondition">
+                                            <label><input type="checkbox" value="{{a.id}}" [(ngModel)]="a.checked" (change)="selectAirCondition($event)">{{a.name}}</label>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFiveth">
+                                <h4 class="panel-title">
+                                    <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFiveth">Room Occupancy</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFiveth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiveth">
+                                <div class="panel-body">
+                                        <div class="checkbox checkbox-primary" *ngFor="let r of rooms">
+                                                <label><input type="checkbox" value="{{r.id}}" [(ngModel)]="r.checked" (change)="selectRooms()">{{r.name}}</label>
+                                        </div>
+                                            
+                                              
+                                </div>
+                            </div>
+                        </div>
+
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+
