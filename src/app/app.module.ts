@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FilterPorcessService } from './services/filterPorcess.service';
+import { CommonService } from './services/common.service';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
 
 
 
@@ -20,12 +22,12 @@ import { FilterPorcessService } from './services/filterPorcess.service';
     FooterComponent,
     SidebarComponent,
     TablesComponent,
-    
+    CapitalizePipe,
   ],
   imports: [
     BrowserModule,FormsModule,HttpModule
   ],
-  providers: [FilterPorcessService],
+  providers: [FilterPorcessService,CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

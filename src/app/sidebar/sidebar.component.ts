@@ -6,14 +6,12 @@ import { IDomain } from '../beans/Domain';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  providers:[CommonService],
-
-})
+  templateUrl: './sidebar.component.html'
+ })
 export class SidebarComponent implements OnInit {
 
   location:IDomain[];
-  price:number=500;
+  price:number=2000;
   min:number=2000;
   max:number=1000000;
   step:number=1000;
@@ -31,16 +29,17 @@ export class SidebarComponent implements OnInit {
     this._commonService.getGender().subscribe((genderData)=>this.gender=genderData);
     this._commonService.getAirCondition().subscribe((acData)=>this.airCondition=acData);
     this._commonService.getRoom().subscribe((roomData)=>this.rooms=roomData);
+    this._filterPorcessService.getTableInfomation([],this.price,0,0,[]);
   }
 
   
   selectLocation():void{
-    console.log(this.selectedGender());
+    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
 
   selectPrice(event:any):void{
        Observable.interval(500).take(1).subscribe(x => {
-       console.log(x);
+        this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
       });
   }
 
@@ -67,6 +66,7 @@ export class SidebarComponent implements OnInit {
           opt.checked=false;
         }
      });
+     this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
 
   selectAirCondition(event:any):void{
@@ -81,10 +81,11 @@ export class SidebarComponent implements OnInit {
          opt.checked=false;
        }
     });
+    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
 
   selectRooms():void{
-    
+    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
 
   selectedLocation():number[] {

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import {IDomain} from '../beans/domain';
+import {Observable} from 'rxjs/Observable';
+import {IFilterInformation} from '../beans/filterInformation';
+import { CommonService } from '../services/common.service';
 
 @Injectable()
 export class FilterPorcessService{
-    cardList:any=[0,1,2,3,4,5,6,7,8,9];
-    domain:IDomain[];
-    constructor(private _http:Http){
+    cardList:IFilterInformation[];
+    constructor(private _commonService:CommonService){
         
+    }
+
+    getTableInfomation(localities:any,price:any,acId:any,gender:any,rooms:any){
+        console.log(localities);
+        this._commonService.getDetails(localities,price,acId,gender,rooms).subscribe((detailData)=>this.cardList=detailData);
     }
 }
