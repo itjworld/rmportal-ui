@@ -11,7 +11,6 @@ export class FilterPorcessService{
     }
 
     getTableInfomation(localities:any,price:any,acId:any,gender:any,rooms:any){
-        console.log(localities);
         this._commonService.getDetails(localities,price,acId,gender,rooms).subscribe((detailData)=>this.cardList=detailData);
     }
 }
