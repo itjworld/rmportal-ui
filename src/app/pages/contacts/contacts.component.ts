@@ -20,6 +20,7 @@ export class ContactsComponent {
   viewContact(){
     if (this.contactForm.dirty && this.contactForm.valid) {
       document.getElementById("close").click();
+      alert(`Name: ${this.contactForm.value.name} Email: ${this.contactForm.value.email} Mobile: ${this.contactForm.value.mobile}`);
     }
   }
 
