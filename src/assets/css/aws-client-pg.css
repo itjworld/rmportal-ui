@@ -145,3 +145,77 @@
   text-align: left;
   vertical-align: middle;
 }
+
+.avatar-group{
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  /*background:#ddd;*/
+  padding: 0;
+  border-radius: 3px;
+  z-index: 2;
+  height: 185px;
+  max-height: 185px;
+  cursor: pointer;
+}
+
+.avatar-group >ul >li {
+  list-style-type: none;
+}
+
+.avatar-group .tag{
+  transform: rotate(90deg);
+  transform-origin: left top 0;
+  -ms-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(-90deg);
+  -ms-transform-origin: left top 0;
+  -moz-transform-origin: left top 0;
+  -webkit-transform-origin: left top 0;
+  transform-origin: left top 0;
+  width: 168px;
+  display: block;
+  position: absolute;
+  bottom: -18px;
+  left: 4px;
+  color: #848484;
+  text-align: center
+}
+
+.hvr-float {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+
+
+.avatar-group .icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 15px 5px 0 0;
+  border: 1px solid rgb(151, 136, 136);
+  border-radius: 100%;
+}
+
+
+
+.avatar-group .icon.girls {
+  background: url(../images/avatar-sprit.png) no-repeat;
+  background-position: -335px 0;
+}
+
+.avatar-group .icon.boys {
+  background: url(../images/avatar-sprit.png) no-repeat;
+  background-position: -293px 0;
+}

@@ -3,6 +3,7 @@ import { Http,Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IDomain} from '../beans/domain';
 import {IFilterInformation} from '../beans/filterInformation';
+import {IEnquiry} from '../beans/enquiry';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -34,6 +35,11 @@ export class CommonService{
         let params={localities:localities,price:price,acId:acId,gender:gender,rooms:rooms};
         return  this._http.get(this._URL+"/api/v1/details",{params: params})
         .map((response:Response)=><IFilterInformation[]>response.json());
+    }
+
+    saveViewContactDetail(enquiry:any):Observable<IEnquiry>{
+        return  this._http.post(this._URL+"/api/v1//enquiry/save",enquiry)
+        .map((response:Response)=><IEnquiry>response.json());
     }
 
 }

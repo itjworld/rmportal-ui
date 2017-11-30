@@ -5,14 +5,21 @@
               <img src="assets/images/room.jpg" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
               <button class="btn btn-defualt request-btn btn-sm"> Request photos</button>
             </figure>
+            <div class="avatar-group">
+                <ul>
+                    <li *ngFor="let r of numberOfRoom(c.roomType);let i = index">
+                        <i title="{{(c.occupied>i)?c.gender:'Empty'}}" class="hvr-float"><span class="icon {{c.occupied==0?'':(c.occupied>i)?(c.gender=='Male')?'boys':(c.gender=='Female')?'girls':'':''}}"></span></i>
+                    </li>
+                </ul>
+            </div>
             <div class="price-tag">
                 <i class="fa fa-rupee"></i>{{c.rent}}<span>/Month</span>
                 <small>Deposit: <i class="fa fa-rupee"></i>{{c.deposit}}</small>
             </div>
             <div class="card-block">
-                <h4 class="card-title">{{c.street1 | capitalize}},{{c.street2 | capitalize}}</h4>
+                <h4 class="card-title">{{c.roomType}} Sharing PG,{{c.street2 | capitalize}}</h4>
                 <div class="meta">
-                  <a href="#">{{c.street1 | capitalize}}</a>
+                  <a href="#">{{c.street2 | capitalize}}</a>
                 </div>
                 <div class="card-text">
                     {{c.content | capitalize}}

@@ -25,5 +25,7 @@ export class TablesComponent implements OnInit {
       this._filterService.cardList=value
    }
 
-   
+   numberOfRoom(length:any):any{
+       return new Array(length);
+   } 
 }
