@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -16,8 +14,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { InfoComponent } from './info/info.component';
 import { AddressComponent } from './address/address.component';
 import { MappingComponent } from './mapping/mapping.component';
-
-
+import { ContactInfomrationComponent } from './pages/contactinfomration/contactInfomration.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +27,9 @@ import { MappingComponent } from './mapping/mapping.component';
     ContactsComponent,
     InfoComponent,
     AddressComponent,
-    MappingComponent
- 
-  ],
+    MappingComponent,
+    ContactInfomrationComponent
+],
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,
     

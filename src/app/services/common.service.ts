@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {IDomain} from '../beans/domain';
 import {IFilterInformation} from '../beans/filterInformation';
 import {IEnquiry} from '../beans/enquiry';
+import {IInfomation} from '../beans/infomation';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -63,5 +64,12 @@ export class CommonService{
         return  this._http.post(this._URL+"/api/v1//enquiry/save",enquiry)
         .map((response:Response)=><IEnquiry>response.json());
     }
+
+    getContactInfomation(_id:number):Observable<IInfomation>{
+        let params={id:_id};
+        return  this._http.get(this._URL+"/api/v1/contact-information",{params: params})
+        .map((response:Response)=><IInfomation>response.json());
+    }
+    
 
 }

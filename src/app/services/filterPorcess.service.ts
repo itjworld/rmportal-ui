@@ -3,16 +3,14 @@ import {Observable} from 'rxjs/Observable';
 import {IFilterInformation} from '../beans/filterInformation';
 import { CommonService } from '../services/common.service';
 import { IEnquiry } from '../beans/enquiry';
-import { IDomain } from '../beans/Domain';
+import {IInfomation} from '../beans/infomation';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class FilterPorcessService{
     cardList:IFilterInformation[];
     userDetail:IEnquiry;
-    location:IDomain[];
-    gender:IDomain[];
-    airCondition:IDomain[];
-    rooms:IDomain[];
+    information:IInfomation;
     constructor(private _commonService:CommonService){
         
     }
@@ -21,10 +19,20 @@ export class FilterPorcessService{
         this._commonService.getDetails(localities,price,acId,gender,rooms).subscribe((detailData)=>this.cardList=detailData);
     }
 
-    saveViewContactDetail(enquiry:any){
-        this._commonService.saveViewContactDetail(enquiry).subscribe((enquiryData)=>{
-            this.userDetail=enquiryData;
-            console.log(this.userDetail);
-        });
+    saveViewContactDetail(enquiry:any):Promise<IEnquiry>{
+
+        let q: Promise<IEnquiry> = new Promise(
+            ( resolve, reject) => {
+                this._commonService.saveViewContactDetail(enquiry).subscribe((enquiryData)=>{
+                    this.userDetail=enquiryData;
+                    resolve(enquiryData);
+                });
+            }
+        );
+        return q;
+    }
+
+    getContactInfomation(_id:number){
+        this._commonService.getContactInfomation(_id).subscribe((inform)=>this.information=inform);
     }
 }
