@@ -3,11 +3,16 @@ import {Observable} from 'rxjs/Observable';
 import {IFilterInformation} from '../beans/filterInformation';
 import { CommonService } from '../services/common.service';
 import { IEnquiry } from '../beans/enquiry';
+import { IDomain } from '../beans/Domain';
 
 @Injectable()
 export class FilterPorcessService{
     cardList:IFilterInformation[];
     userDetail:IEnquiry;
+    location:IDomain[];
+    gender:IDomain[];
+    airCondition:IDomain[];
+    rooms:IDomain[];
     constructor(private _commonService:CommonService){
         
     }

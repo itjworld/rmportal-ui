@@ -13,6 +13,9 @@ import { FilterPorcessService } from './services/filterPorcess.service';
 import { CommonService } from './services/common.service';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { InfoComponent } from './info/info.component';
+import { AddressComponent } from './address/address.component';
+import { MappingComponent } from './mapping/mapping.component';
 
 
 
@@ -24,7 +27,10 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
     SidebarComponent,
     TablesComponent,
     CapitalizePipe,
-    ContactsComponent
+    ContactsComponent,
+    InfoComponent,
+    AddressComponent,
+    MappingComponent
  
   ],
   imports: [

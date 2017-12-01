@@ -10,7 +10,6 @@ import { IDomain } from '../beans/Domain';
  })
 export class SidebarComponent implements OnInit {
 
-  location:IDomain[];
   price:number=2000;
   min:number=2000;
   max:number=1000000;
@@ -32,6 +31,14 @@ export class SidebarComponent implements OnInit {
     this._filterPorcessService.getTableInfomation([],this.price,0,0,[]);
   }
 
+
+  get location():IDomain[]{
+    return this._filterPorcessService.location;
+  }
+
+   set location(value:IDomain []){
+      //this._filterPorcessService.location=value
+   }
   
   selectLocation():void{
     this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());

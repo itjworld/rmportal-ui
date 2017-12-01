@@ -10,9 +10,22 @@ import 'rxjs/add/operator/map';
 export class CommonService{
     //http://springbootangular2-env.us-east-2.elasticbeanstalk.com
     _URL:string="http://localhost:8080/rmportal";
+    
+    location:IDomain[];
+    gender:IDomain[];
+    airCondition:IDomain[];
+    rooms:IDomain[];
+    city:IDomain[];
+    address:any;
+    
     constructor(private _http:Http){
-        
+        this.getLocation().subscribe((locationData)=>this.location=locationData);
+        this.getGender().subscribe((genderData)=>this.gender=genderData);
+        this.getAirCondition().subscribe((acData)=>this.airCondition=acData);
+        this.getRoom().subscribe((roomData)=>this.rooms=roomData);
+        this.getCity().subscribe((cityData)=>this.city=cityData);
     }
+ 
     getLocation():Observable<IDomain[]>{
         return  this._http.get(this._URL+"/api/v1/details/location")
         .map((response:Response)=><IDomain[]>response.json());
@@ -29,6 +42,15 @@ export class CommonService{
     getRoom():Observable<IDomain[]>{
         return  this._http.get(this._URL+"/api/v1/details/room")
         .map((response:Response)=><IDomain[]>response.json());
+    }
+
+    getCity():Observable<IDomain[]>{
+        return  this._http.get(this._URL+"/api/v1/details/location")
+        .map((response:Response)=><IDomain[]>response.json());
+    }
+
+    getAddress(cityId:number):any{
+       return this._http.get(this._URL+"/api/v1/address/"+cityId).map((response:Response)=><any>response.json()).subscribe((addressData)=>this.address=addressData);
     }
 
     getDetails(localities:any,price:any,acId:any,gender:any,rooms:any):Observable<IFilterInformation[]>{
