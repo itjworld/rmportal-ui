@@ -14,7 +14,9 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { InfoComponent } from './info/info.component';
 import { AddressComponent } from './address/address.component';
 import { MappingComponent } from './mapping/mapping.component';
+import { HomeComponent } from './home/home.component';
 import { ContactInfomrationComponent } from './pages/contactinfomration/contactInfomration.component';
+import { appRouterModule } from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -28,11 +30,11 @@ import { ContactInfomrationComponent } from './pages/contactinfomration/contactI
     InfoComponent,
     AddressComponent,
     MappingComponent,
-    ContactInfomrationComponent
+    ContactInfomrationComponent,
+    HomeComponent
 ],
   imports: [
-    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,
-    
+    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
   ],
   providers: [FilterPorcessService,CommonService],
   bootstrap: [AppComponent]

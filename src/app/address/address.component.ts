@@ -13,7 +13,7 @@ export class AddressComponent implements OnInit {
   constructor(private _commonService : CommonService) { }
 
    ngOnInit() {
-    this.locations[0] = "noida";
+    //this.locations[0] = "noida";
   }
 
   get city():any{
