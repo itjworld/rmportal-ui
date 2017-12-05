@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonService } from './../services/common.service';
+import { MappingConfig } from '../beans/mapping';
 
 @Component({
    templateUrl: './mapping.component.html',
   styleUrls: ['./mapping.component.css']
 })
+
 export class MappingComponent implements OnInit {
 
   constructor(private _commonService : CommonService) { }
+  @Input() mapping: MappingConfig;
 
   ngOnInit() {
+    this.mapping=new MappingConfig();
   }
 
   get roomType():any{
@@ -55,6 +59,11 @@ export class MappingComponent implements OnInit {
    changeCity(event:any){
       console.log(event.target.value);
       this._commonService.getAddress(event.target.value);
+   }
+
+   submitForm(){
+    console.log(this.mapping)
+    this._commonService.saveMappingDetails(this.mapping);
    }
 
 }

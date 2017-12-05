@@ -13,7 +13,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                            <div class="checkbox checkbox-primary" *ngFor="let l of location">
+                            <div class="checkbox checkbox-primary" *ngFor="let l of location()">
                                     <label><input type="checkbox"  value="{{l.id}}" [(ngModel)]="l.checked" (change)="selectLocation()" >{{l.name}}</label>
                              </div>
                     </div>

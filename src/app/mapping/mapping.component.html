@@ -3,7 +3,7 @@
     
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form role="form">
+        <form name="form" #f="ngForm" (ngSubmit)="submitForm(f)" novalidate>
           <h2>Mapping Details <small>Room mapping details</small></h2>
           <hr class="colorgraph">
           <div class="row">
@@ -17,7 +17,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                  <select name="address" id="address" class="form-control input-lg" tabindex="2" required  >
+                  <select name="address" id="address" class="form-control input-lg" tabindex="2" required [(ngModel)]="mapping.addressId" >
                       <option value="">Address</option>
                       <option *ngFor="let l of address" value="{{l.id}}">{{l.street1}}</option>
                   </select>
@@ -28,12 +28,12 @@
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                              <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3">
+                              <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3" [(ngModel)]="mapping.roomNo">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <select  id="roomtype" class="form-control input-lg" tabindex="4"  required>
+                    <select  id="roomtype" class="form-control input-lg" tabindex="4" name="roomType" required [(ngModel)]="mapping.roomTypeId">
                         <option value="">Room Type</option>
                         <option *ngFor="let l of roomType" value="{{l.id}}">{{l.name}}</option>
                     </select>
@@ -44,19 +44,19 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="rent" id="rent" class="form-control input-lg" placeholder="Rent" tabindex="5">
+                <input type="text" name="rent" id="rent" class="form-control input-lg" placeholder="Rent" tabindex="5" [(ngModel)]="mapping.rent">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="security" id="security" class="form-control input-lg" placeholder="Security" tabindex="6">
+                <input type="text" name="security" id="security" class="form-control input-lg" placeholder="Security" tabindex="6" [(ngModel)]="mapping.security">
               </div>
             </div>
           </div>
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <select name="actype" id="actype" class="form-control input-lg" tabindex="7" required>
+                  <select name="actype" id="actype" class="form-control input-lg" tabindex="7" required [(ngModel)]="mapping.acId">
                       <option value="">AC Type</option>
                       <option *ngFor="let l of ac" value="{{l.id}}">{{l.name}}</option>
                   </select>
@@ -65,7 +65,7 @@
              
               <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="form-group">
-                      <select name="gender" id="gender" class="form-control input-lg" tabindex="2" required>
+                      <select name="gender" id="gender" class="form-control input-lg" tabindex="2" required [(ngModel)]="mapping.genderId">
                           <option value="">Gender</option>
                           <option *ngFor="let l of gender" value="{{l.id}}">{{l.name}}</option>
                       </select>
@@ -73,7 +73,7 @@
                 </div>  
             </div>
             <div class="form-group">
-                <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8">
+                <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8" [(ngModel)]="mapping.desc">
              </div>
           <hr class="colorgraph">
           <div class="row">
