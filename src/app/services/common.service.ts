@@ -72,18 +72,9 @@ export class CommonService{
     }
     
    saveMappingDetails(mapping:any):Observable<any>{
-        let p={
-            "acId": "7",
-            "addressId": "1",
-            "desc": "tes",
-            "genderId": "1",
-            "rent": "5000",
-            "roomNo": "5",
-            "roomTypeId": "9",
-            "security": "4000"
-        }
-        return  this._http.post(this._URL+"/api/v1/mapping/save",p)
-        .map((response:Response)=><any>response.json());
+       return this._http.post(this._URL+"/api/v1/mapping/save",mapping)
+       .map((response:Response)=><any>response.json));
+        
     }
 
 }

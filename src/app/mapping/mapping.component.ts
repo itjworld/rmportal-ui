@@ -63,7 +63,9 @@ export class MappingComponent implements OnInit {
 
    submitForm(){
     console.log(this.mapping)
-    this._commonService.saveMappingDetails(this.mapping);
+    this._commonService.saveMappingDetails(this.mapping).subscribe((mapping=>{
+        console.info("save");
+    }));
    }
 
 }
