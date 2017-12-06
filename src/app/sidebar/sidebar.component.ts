@@ -9,29 +9,49 @@ import { IDomain } from '../beans/Domain';
   templateUrl: './sidebar.component.html'
  })
 export class SidebarComponent implements OnInit {
-
-  location:IDomain[];
   price:number=2000;
   min:number=2000;
   max:number=30000;
   step:number=1000;
   dispalyPrice:String;
-  gender:IDomain[];
-  airCondition:IDomain[];
-  rooms:IDomain[];
-  
   
   constructor(private _filterPorcessService:FilterPorcessService,private _commonService:CommonService) { }
 
   ngOnInit() {
     this.dispalyPrice=this.min+"K";
-    this._commonService.getLocation().subscribe((locationData)=>this.location=locationData);
-    this._commonService.getGender().subscribe((genderData)=>this.gender=genderData);
-    this._commonService.getAirCondition().subscribe((acData)=>this.airCondition=acData);
-    this._commonService.getRoom().subscribe((roomData)=>this.rooms=roomData);
     this._filterPorcessService.getTableInfomation([],this.price,0,0,[]);
   }
+  get location():any{
+    return this._commonService.location;
+  }
 
+   set location(value:any){
+      this._commonService.location=value
+   }
+
+  get roomType():any{
+    return this._commonService.rooms;
+  }
+
+   set roomType(value:any){
+      this._commonService.rooms=value
+   }
+
+   get ac():any{
+    return this._commonService.airCondition;
+  }
+
+   set ac(value:any){
+      this._commonService.airCondition=value
+   }
+
+   get gender():any{
+    return this._commonService.gender;
+  }
+
+   set gender(value:any){
+      this._commonService.gender=value
+   }
   selectLocation():void{
     this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
@@ -73,7 +93,7 @@ export class SidebarComponent implements OnInit {
     if(event.target.checked){
        i=event.target.value;
     }
-    this.airCondition.filter(opt =>{
+    this.ac.filter(opt =>{
        if(opt.id==i){
          opt.checked=true;
        }else{
@@ -95,11 +115,11 @@ export class SidebarComponent implements OnInit {
     return this.gender.filter(opt => opt.checked).map(opt => opt.id).join(",");
   }
   selectedAirCondition():String { 
-    return this.airCondition.filter(opt => opt.checked).map(opt => opt.id).join(",");
+    return this.ac.filter(opt => opt.checked).map(opt => opt.id).join(",");
   }
 
   selectedRooms():number[] { 
-    return this.rooms.filter(opt => opt.checked).map(opt => opt.id);
+    return this.roomType.filter(opt => opt.checked).map(opt => opt.id);
   }
 }
 

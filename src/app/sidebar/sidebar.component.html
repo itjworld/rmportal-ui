@@ -13,7 +13,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                            <div class="checkbox checkbox-primary" *ngFor="let l of location()">
+                            <div class="checkbox checkbox-primary" *ngFor="let l of location">
                                     <label><input type="checkbox"  value="{{l.id}}" [(ngModel)]="l.checked" (change)="selectLocation()" >{{l.name}}</label>
                              </div>
                     </div>
@@ -61,7 +61,7 @@
                         </div>
                         <div id="collapseFourth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourth">
                             <div class="panel-body">
-                                    <div class="checkbox checkbox-primary" *ngFor="let a of airCondition">
+                                    <div class="checkbox checkbox-primary" *ngFor="let a of ac">
                                             <label><input type="checkbox" value="{{a.id}}" [(ngModel)]="a.checked" (change)="selectAirCondition($event)">{{a.name}}</label>
                                     </div>
                             </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div id="collapseFiveth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiveth">
                                 <div class="panel-body">
-                                        <div class="checkbox checkbox-primary" *ngFor="let r of rooms">
+                                        <div class="checkbox checkbox-primary" *ngFor="let r of roomType">
                                                 <label><input type="checkbox" value="{{r.id}}" [(ngModel)]="r.checked" (change)="selectRooms()">{{r.name}}</label>
                                         </div>
                                             
