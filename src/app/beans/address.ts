@@ -4,5 +4,6 @@ export class AddressConfig{
     mobile:string;
     street1:string;
     street2:string;
+    email:string;
     location:string='';
 }

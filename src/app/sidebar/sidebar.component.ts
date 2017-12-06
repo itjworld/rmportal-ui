@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.dispalyPrice=this.min+"K";
-    this._filterPorcessService.getTableInfomation([],this.price,0,0,[]);
+    this._filterPorcessService.getTableInfomation([],0,0,0,[]);
   }
   get location():any{
     return this._commonService.location;
