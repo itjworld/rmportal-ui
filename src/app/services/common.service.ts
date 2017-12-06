@@ -73,8 +73,13 @@ export class CommonService{
     
    saveMappingDetails(mapping:any):Observable<any>{
        return this._http.post(this._URL+"/api/v1/mapping/save",mapping)
-       .map((response:Response)=><any>response.json));
+       .map((response:Response)=><any>response.json);
         
     }
+
+   saveAddressDetails(address:any):Observable<any>{
+    return this._http.post(this._URL+"/api/v1/address/save",address)
+    .map((response:Response)=><any>response.json);
+   }
 
 }

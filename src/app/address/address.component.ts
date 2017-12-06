@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonService } from './../services/common.service';
+import {AddressConfig} from '../beans/address';
+import { from } from 'rxjs/observable/from';
 
 @Component({
   selector: 'app-address',
@@ -8,12 +10,12 @@ import { CommonService } from './../services/common.service';
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
-
+  information : AddressConfig;
   locations : String[];
   constructor(private _commonService : CommonService) { }
 
    ngOnInit() {
-    //this.locations[0] = "noida";
+    this.information = new AddressConfig();
   }
 
   get city():any{
@@ -22,6 +24,13 @@ export class AddressComponent implements OnInit {
 
    set city(value:any){
       this._commonService.city=value
+   }
+
+   submitForm(){
+    console.log(this.information)
+    this._commonService.saveAddressDetails(this.information).subscribe((address=>{
+        console.info("save");
+    }));
    }
 
 }
