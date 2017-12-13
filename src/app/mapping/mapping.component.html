@@ -3,13 +3,13 @@
     
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form name="form" #f="ngForm" (ngSubmit)="submitForm()" novalidate>
+        <form name="form" [formGroup]="mappingForm" #f="ngForm" (ngSubmit)="submitForm()">
           <h2>Mapping Details <small>Room mapping details</small></h2>
           <hr class="colorgraph">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                  <select name="city" id="city" class="form-control input-lg" tabindex="1" required (change)="changeCity($event)">
+                  <select name="city" id="city" class="form-control input-lg" tabindex="1" [formControl]="mappingForm.controls['cityId']" required (change)="changeCity($event)">
                       <option value="">City</option>
                       <option *ngFor="let l of city" value="{{l.id}}">{{l.name}}</option>
                   </select>
@@ -17,7 +17,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                  <select name="address" id="address" class="form-control input-lg" tabindex="2" required [(ngModel)]="mapping.addressId" >
+                  <select name="address" id="address" class="form-control input-lg" tabindex="2" required [formControl]="mappingForm.controls['addressId']" >
                       <option value="">Address</option>
                       <option *ngFor="let l of address" value="{{l.id}}">{{l.street1}}</option>
                   </select>
@@ -28,12 +28,12 @@
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                              <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3" [(ngModel)]="mapping.roomNo">
+                              <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3" [formControl]="mappingForm.controls['roomNo']">
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <select  id="roomtype" class="form-control input-lg" tabindex="4" name="roomType" required [(ngModel)]="mapping.roomTypeId">
+                    <select  id="roomtype" class="form-control input-lg" tabindex="4" name="roomType" required [formControl]="mappingForm.controls['roomTypeId']">
                         <option value="">Room Type</option>
                         <option *ngFor="let l of roomType" value="{{l.id}}">{{l.name}}</option>
                     </select>
@@ -44,19 +44,19 @@
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="rent" id="rent" class="form-control input-lg" placeholder="Rent" tabindex="5" [(ngModel)]="mapping.rent">
+                <input type="text" name="rent" id="rent" class="form-control input-lg" placeholder="Rent" tabindex="5" [formControl]="mappingForm.controls['rent']">
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
-                <input type="text" name="security" id="security" class="form-control input-lg" placeholder="Security" tabindex="6" [(ngModel)]="mapping.security">
+                <input type="text" name="security" id="security" class="form-control input-lg" placeholder="Security" tabindex="6" [formControl]="mappingForm.controls['security']">
               </div>
             </div>
           </div>
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                  <select name="actype" id="actype" class="form-control input-lg" tabindex="7" required [(ngModel)]="mapping.acId">
+                  <select name="actype" id="actype" class="form-control input-lg" tabindex="7" required [formControl]="mappingForm.controls['acId']">
                       <option value="">AC Type</option>
                       <option *ngFor="let l of ac" value="{{l.id}}">{{l.name}}</option>
                   </select>
@@ -65,7 +65,7 @@
              
               <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="form-group">
-                      <select name="gender" id="gender" class="form-control input-lg" tabindex="2" required [(ngModel)]="mapping.genderId">
+                      <select name="gender" id="gender" class="form-control input-lg" tabindex="2" required [formControl]="mappingForm.controls['genderId']">
                           <option value="">Gender</option>
                           <option *ngFor="let l of gender" value="{{l.id}}">{{l.name}}</option>
                       </select>
@@ -73,12 +73,13 @@
                 </div>  
             </div>
             <div class="form-group">
-                <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8" [(ngModel)]="mapping.desc">
+                <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8" [formControl]="mappingForm.controls['desc']">
              </div>
           <hr class="colorgraph">
           <div class="row">
-            <div class="col-xs-12 col-md-6"><input type="submit" value="Save" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
-            <div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg" tabindex="10">Cancel</a></div>
+            <div class="col-xs-12 col-md-6"><input type="submit" value="Save" [disabled]="!mappingForm.valid" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
+            <div class="col-xs-12 col-md-6"><input type="reset" class="btn btn-success btn-block btn-lg" tabindex="10" value="Cancel">
+            </div>
           </div>
         </form>
       </div>
