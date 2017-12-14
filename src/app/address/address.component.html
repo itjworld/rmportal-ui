@@ -2,60 +2,69 @@
     
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-          <form #f="ngForm" [formGroup]="addressForm" (ngSubmit)="submitForm()">
+          <form [formGroup]="addressForm" (ngSubmit)="submitForm()">
           <h2>Address Details <small>Owner details</small></h2>
           <hr class="colorgraph">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
+              <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['fName'].valid && addressForm.controls['fName'].touched}">
               <input type="text" [formControl]="addressForm.controls['fName']" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required>
+              <div *ngIf="addressForm.controls['fName'].hasError('required') && addressForm.controls['fName'].touched" class="alert alert-danger">please enter first name.</div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
+              <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['lName'].valid && addressForm.controls['lName'].touched}">
                 <input type="text" name="last_name" id="last_name" class="form-control input-lg" [formControl]="addressForm.controls['lName']" placeholder="Last Name" tabindex="2" required>
+                <div *ngIf="addressForm.controls['lName'].hasError('required') && addressForm.controls['lName'].touched" class="alert alert-danger">please enter last name.</div>
               </div>
             </div>
           </div>
           
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
-                              <input type="text" pattern="[0-9]*" [formControl]="addressForm.controls['mobile']" name="mobile" id="mobile" class="form-control  input-lg" placeholder="Mobile" tabindex="3" required>
-                </div>
+                <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['mobile'].valid && addressForm.controls['mobile'].touched}">
+                    <input type="text" pattern="[0-9]*" [formControl]="addressForm.controls['mobile']" name="mobile" id="mobile" class="form-control  input-lg" placeholder="Mobile" tabindex="3" required>
+                    <div *ngIf="addressForm.controls['mobile'].hasError('required') && addressForm.controls['mobile'].touched" class="alert alert-danger">You enter mobile.</div>
+                  </div>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['email'].valid && addressForm.controls['email'].touched}">
                   <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [formControl]="addressForm.controls['email']" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4" required>
+                  <div *ngIf="addressForm.controls['email'].hasError('required') && addressForm.controls['email'].touched" class="alert alert-danger">please enter email.</div>
                 </div>
               </div>
             </div>
             
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
-                <input type="text" name="street1" [formControl]="addressForm.controls['street1']" id="street1" class="form-control input-lg" placeholder="Street 1" tabindex="5"required> 
+              <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['street1'].valid && addressForm.controls['street1'].touched}">
+                <input type="text" name="street1" [formControl]="addressForm.controls['street1']" id="street1" class="form-control input-lg" placeholder="Street 1" tabindex="5" required> 
+                <div *ngIf="addressForm.controls['street1'].hasError('required') && addressForm.controls['street1'].touched" class="alert alert-danger">please enter street 1.</div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="form-group">
+              <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['street2'].valid && addressForm.controls['street2'].touched}">
                 <input type="text" [formControl]="addressForm.controls['street2']" name="street2" id="street2" class="form-control input-lg" placeholder="Street 2" tabindex="6" required>
+                <div *ngIf="addressForm.controls['street2'].hasError('required') && addressForm.controls['street2'].touched" class="alert alert-danger">please enter street 2.</div>
               </div>
             </div>
           </div>
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['location'].valid && addressForm.controls['location'].touched}">
                   <select name="location" id="location" [formControl]="addressForm.controls['location']" class="form-control input-lg" tabindex="7" required>
                       <option value="">Location</option>
                       <option *ngFor="let l of city" value="{{l.id}}">{{l.name}}</option>
                     
                   </select>
+                  <div *ngIf="addressForm.controls['location'].hasError('required') && addressForm.controls['location'].touched" class="alert alert-danger">please enter location.</div>
+                  
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{'has-error':!addressForm.controls['zip'].valid && addressForm.controls['zip'].touched}">
                   <input type="text" name="zip" id="zip" class="form-control input-lg" [formControl]="addressForm.controls['zip']" placeholder="Zip Code" tabindex="8">
+                  <div *ngIf="addressForm.controls['zip'].hasError('required') && addressForm.controls['zip'].touched" class="alert alert-danger">please enter zipcode.</div>
                 </div>
               </div>
             </div>
