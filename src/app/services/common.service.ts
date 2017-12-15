@@ -6,11 +6,12 @@ import {IFilterInformation} from '../beans/filterInformation';
 import {IEnquiry} from '../beans/enquiry';
 import {IInfomation} from '../beans/infomation';
 import 'rxjs/add/operator/map';
+import {IUserDetail} from '../beans/userdetail';
 
 @Injectable()
 export class CommonService{
-    //_URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
-    _URL:string="http://localhost:8080/rmportal";
+    _URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
+    //_URL:string="http://localhost:8080/rmportal";
     
     location:IDomain[];
     gender:IDomain[];
@@ -80,6 +81,11 @@ export class CommonService{
    saveAddressDetails(address:any):Observable<any>{
     return this._http.post(this._URL+"/api/v1/address/save",address)
     .map((response:Response)=><any>response.json);
+   }
+
+   validate(user:any):Observable<IUserDetail>{
+    return this._http.post(this._URL+"/api/v1/validate",user)
+    .map((response:Response)=><IUserDetail>response.json());
    }
 
 }

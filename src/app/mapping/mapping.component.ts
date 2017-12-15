@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommonService } from './../services/common.service';
 import { FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MappingConfig } from '../beans/mapping';
+import {AuthenticationService} from './../services/authentication.service';
 
 @Component({
    templateUrl: './mapping.component.html',
@@ -10,7 +11,7 @@ import { MappingConfig } from '../beans/mapping';
 
 export class MappingComponent implements OnInit {
   mappingForm : FormGroup;
-  constructor(private _commonService : CommonService, fb: FormBuilder) { 
+  constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService) { 
     this.mappingForm = fb.group({
       'rent': ['', Validators.required],
       'addressId': ['', Validators.required],
@@ -24,9 +25,8 @@ export class MappingComponent implements OnInit {
     })
   }
   // @Input() mapping: MappingConfig;
-
   ngOnInit() {
-    // this.mapping=new MappingConfig();
+    this._service.checkCredentials();
   }
 
   get roomType():any{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isIn = false;   // store state
+  username:String;
   toggleState() { // click handler
       let bool = this.isIn;
       this.isIn = bool === false ? true : false; 
   }
-  constructor() { }
+  constructor(private _router : Router) { }
 
   ngOnInit() {
   }
+
+  logout() {
+    localStorage.removeItem("user");
+    this._router.navigate(['login']);
+  }
+
+  checkCredentials( ): boolean{
+    if (localStorage.getItem("user") === null){     
+      return false;
+    }
+    return true;
+  } 
+
+  getName( ): String{
+    return localStorage.getItem("user");
+  } 
 
 }

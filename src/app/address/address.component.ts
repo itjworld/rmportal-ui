@@ -3,6 +3,7 @@ import { FormsModule, FormControl,FormBuilder, Validators, FormGroup } from '@an
 import { CommonService } from './../services/common.service';
 import {AddressConfig} from '../beans/address';
 import { from } from 'rxjs/observable/from';
+import {AuthenticationService} from './../services/authentication.service';
 
 
 @Component({  
@@ -14,7 +15,7 @@ export class AddressComponent implements OnInit {
   addressForm : FormGroup;
   // information : AddressConfig;
   locations : String[];
-  constructor(private _commonService : CommonService, fb: FormBuilder) { 
+  constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService) { 
     this.addressForm = fb.group({
       'fName': ['', Validators.required],
       'lName': ['', Validators.required],
@@ -28,7 +29,7 @@ export class AddressComponent implements OnInit {
   }
 
    ngOnInit() {
-    // this.information = new AddressConfig();
+    this._service.checkCredentials();
   }
 
   get city():any{

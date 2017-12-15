@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FilterPorcessService } from './services/filterPorcess.service';
 import { CommonService } from './services/common.service';
+import { AuthenticationService } from './services/authentication.service';
 import { CapitalizePipe } from './pipe/capitalize.pipe';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { InfoComponent } from './info/info.component';
@@ -17,6 +18,7 @@ import { MappingComponent } from './mapping/mapping.component';
 import { HomeComponent } from './home/home.component';
 import { ContactInfomrationComponent } from './pages/contactinfomration/contactInfomration.component';
 import { appRouterModule } from "./app.routes";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,13 @@ import { appRouterModule } from "./app.routes";
     AddressComponent,
     MappingComponent,
     ContactInfomrationComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
 ],
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
   ],
-  providers: [FilterPorcessService,CommonService],
+  providers: [FilterPorcessService,CommonService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
