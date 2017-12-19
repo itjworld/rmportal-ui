@@ -6,6 +6,7 @@
         <form name="form" [formGroup]="mappingForm" #f="ngForm" (ngSubmit)="submitForm()">
           <h2>Mapping Details <small>Room mapping details</small></h2>
           <hr class="colorgraph">
+          <alert></alert>
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
@@ -13,6 +14,8 @@
                       <option value="">City</option>
                       <option *ngFor="let l of city" value="{{l.id}}">{{l.name}}</option>
                   </select>
+                  <div *ngIf="mappingForm.controls['cityId'].hasError('required') && mappingForm.controls['cityId'].touched" class="alert alert-danger">please select city.</div>
+                
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -21,6 +24,8 @@
                       <option value="">Address</option>
                       <option *ngFor="let l of address" value="{{l.id}}">{{l.street1}}</option>
                   </select>
+                  <div *ngIf="mappingForm.controls['addressId'].hasError('required') && mappingForm.controls['addressId'].touched" class="alert alert-danger">please select address.</div>
+                
               </div>
             </div>
           </div>
@@ -28,7 +33,9 @@
           <div class="row">
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                              <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3" [formControl]="mappingForm.controls['roomNo']">
+                    <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="3" [formControl]="mappingForm.controls['roomNo']">
+                    <div *ngIf="mappingForm.controls['roomNo'].hasError('required') && mappingForm.controls['roomNo'].touched" class="alert alert-danger">please enter room no.</div>
+                  
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-6">
@@ -37,6 +44,8 @@
                         <option value="">Room Type</option>
                         <option *ngFor="let l of roomType" value="{{l.id}}">{{l.name}}</option>
                     </select>
+                    <div *ngIf="mappingForm.controls['roomTypeId'].hasError('required') && mappingForm.controls['roomTypeId'].touched" class="alert alert-danger">please enter room type.</div>
+                  
                 </div>
               </div>
             </div>
@@ -45,11 +54,15 @@
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                 <input type="text" name="rent" id="rent" class="form-control input-lg" placeholder="Rent" tabindex="5" [formControl]="mappingForm.controls['rent']">
+                <div *ngIf="mappingForm.controls['rent'].hasError('required') && mappingForm.controls['rent'].touched" class="alert alert-danger">please enter rent.</div>
+              
               </div>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6">
               <div class="form-group">
                 <input type="text" name="security" id="security" class="form-control input-lg" placeholder="Security" tabindex="6" [formControl]="mappingForm.controls['security']">
+                <div *ngIf="mappingForm.controls['security'].hasError('required') && mappingForm.controls['security'].touched" class="alert alert-danger">please enter security.</div>
+              
               </div>
             </div>
           </div>
@@ -60,6 +73,8 @@
                       <option value="">AC Type</option>
                       <option *ngFor="let l of ac" value="{{l.id}}">{{l.name}}</option>
                   </select>
+                  <div *ngIf="mappingForm.controls['acId'].hasError('required') && mappingForm.controls['acId'].touched" class="alert alert-danger">please select ac.</div>
+                
                 </div>
               </div>
              
@@ -69,11 +84,15 @@
                           <option value="">Gender</option>
                           <option *ngFor="let l of gender" value="{{l.id}}">{{l.name}}</option>
                       </select>
+                      <div *ngIf="mappingForm.controls['genderId'].hasError('required') && mappingForm.controls['genderId'].touched" class="alert alert-danger">please select gender.</div>
+                    
                   </div>
                 </div>  
             </div>
             <div class="form-group">
                 <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8" [formControl]="mappingForm.controls['desc']">
+                <div *ngIf="mappingForm.controls['desc'].hasError('required') && mappingForm.controls['desc'].touched" class="alert alert-danger">please enter description.</div>
+          
              </div>
           <hr class="colorgraph">
           <div class="row">

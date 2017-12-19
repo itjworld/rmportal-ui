@@ -4,7 +4,7 @@ import { CommonService } from './../services/common.service';
 import {AddressConfig} from '../beans/address';
 import { from } from 'rxjs/observable/from';
 import {AuthenticationService} from './../services/authentication.service';
-
+import { AlertService } from '../alert/alert.service';
 
 @Component({  
   selector: 'app-address',
@@ -15,7 +15,7 @@ export class AddressComponent implements OnInit {
   addressForm : FormGroup;
   // information : AddressConfig;
   locations : String[];
-  constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService) { 
+  constructor(private _commonService : CommonService,  private alertService: AlertService, fb: FormBuilder,private _service : AuthenticationService) { 
     this.addressForm = fb.group({
       'fName': ['', Validators.required],
       'lName': ['', Validators.required],
@@ -41,7 +41,7 @@ export class AddressComponent implements OnInit {
    }
 
    submitForm(){
-  
+    this.alertService.clear();
     if (this.addressForm.dirty && this.addressForm.valid) {
     let address:any={name:this.addressForm.value.fName + " " + this.addressForm.value.lName,email:this.addressForm.value.email,
       mobile:this.addressForm.value.mobile,street1:this.addressForm.value.street1,
@@ -49,6 +49,7 @@ export class AddressComponent implements OnInit {
     console.log(address);
     this._commonService.saveAddressDetails(address).subscribe((address=>{
         console.info("save");
+        this.alertService.success("Address configuration saved");
     }));
   }
    }
