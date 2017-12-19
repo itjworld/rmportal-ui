@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactInfomrationComponent } from './pages/contactinfomration/contactInfomration.component';
 import { appRouterModule } from "./app.routes";
 import { LoginComponent } from './login/login.component';
+import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     MappingComponent,
     ContactInfomrationComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FilterMenuComponent
 ],
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
