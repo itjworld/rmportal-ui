@@ -3,6 +3,7 @@ import { CommonService } from './../services/common.service';
 import { FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MappingConfig } from '../beans/mapping';
 import {AuthenticationService} from './../services/authentication.service';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
    templateUrl: './mapping.component.html',
@@ -11,7 +12,7 @@ import {AuthenticationService} from './../services/authentication.service';
 
 export class MappingComponent implements OnInit {
   mappingForm : FormGroup;
-  constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService) { 
+  constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService,  private alertService: AlertService) { 
     this.mappingForm = fb.group({
       'rent': ['', Validators.required],
       'addressId': ['', Validators.required],
@@ -75,7 +76,7 @@ export class MappingComponent implements OnInit {
    }
 
    submitForm(){    
-
+    this.alertService.clear();
     if (this.mappingForm.dirty && this.mappingForm.valid) {
       let mapping:any={cityId:this.mappingForm.value.cityId,addressId:this.mappingForm.value.addressId,roomTypeId:this.mappingForm.value.roomTypeId,
         acId:this.mappingForm.value.acId,genderId:this.mappingForm.value.genderId,
@@ -84,6 +85,7 @@ export class MappingComponent implements OnInit {
       console.log(mapping);
       this._commonService.saveMappingDetails(mapping).subscribe((mapping=>{
           console.info("save");
+          this.alertService.success("Mapping configuration saved");
       }));
     }    
    }

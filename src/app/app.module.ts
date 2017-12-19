@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { ContactInfomrationComponent } from './pages/contactinfomration/contactInfomration.component';
 import { appRouterModule } from "./app.routes";
 import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,13 @@ import { LoginComponent } from './login/login.component';
     MappingComponent,
     ContactInfomrationComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent
 ],
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
   ],
-  providers: [FilterPorcessService,CommonService,AuthenticationService],
+  providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
