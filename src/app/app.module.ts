@@ -22,6 +22,8 @@ import { LoginComponent } from './login/login.component';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert/alert.service';
+import { QueryComponent } from './query/query.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AlertService } from './alert/alert.service';
     HomeComponent,
     LoginComponent,
     FilterMenuComponent,
-    AlertComponent
+    AlertComponent,
+    QueryComponent,
+    RoomComponent
 
 ],
   imports: [

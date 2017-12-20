@@ -9,7 +9,7 @@ import { IDomain } from '../beans/Domain';
   templateUrl: './sidebar.component.html'
  })
 export class SidebarComponent implements OnInit {
-  price:number=2000;
+  price:number=0;
   min:number=2000;
   max:number=30000;
   step:number=1000;

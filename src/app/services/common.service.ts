@@ -10,7 +10,7 @@ import {IUserDetail} from '../beans/userdetail';
 
 @Injectable()
 export class CommonService{
-    // _URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
+    //_URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
     _URL:string="http://localhost:8080/rmportal";
     
     location:IDomain[];
@@ -87,5 +87,16 @@ export class CommonService{
     return this._http.post(this._URL+"/api/v1/validate",user)
     .map((response:Response)=><IUserDetail>response.json());
    }
+
+   execute(query:String):Observable<boolean>{
+    return this._http.post(this._URL+"/api/v1/execute",query)
+    .map((response:Response)=><boolean>response.json());
+   }
+
+   updateRoomBooked(mapping:any):Observable<any>{
+    return this._http.post(this._URL+"/api/v1/room/update",mapping)
+    .map((response:Response)=><any>response.json);
+     
+ }
 
 }

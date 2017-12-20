@@ -3,6 +3,8 @@ import { AddressComponent } from './address/address.component';
 import { MappingComponent } from './mapping/mapping.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { QueryComponent } from './query/query.component';
+import { RoomComponent } from './room/room.component';
 
 // Route Configuration
 export const routes: Routes = [
@@ -10,7 +12,9 @@ export const routes: Routes = [
     { path: 'home', component:HomeComponent},
     { path: 'mapping', component: MappingComponent },
     { path: 'address', component: AddressComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'query', component: QueryComponent },
+    { path: 'room', component: RoomComponent }
   ];
 
   export const appRouterModule = RouterModule.forRoot(routes);
