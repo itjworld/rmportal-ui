@@ -121,6 +121,22 @@ export class SidebarComponent implements OnInit {
   selectedRooms():number[] { 
     return this.roomType.filter(opt => opt.checked).map(opt => opt.id);
   }
+
+  open(id){
+    /*var element = document.getElementById(id);
+    console.log(id);
+    if(element.classList.contains('in')){
+        Observable.interval(200).take(1).subscribe(x => {
+        element.classList.remove("in");
+        element.setAttribute("aria-expanded", 'false');
+      });
+    }else{
+        Observable.interval(200).take(1).subscribe(x => {
+        element.classList.add("in");
+        element.setAttribute("aria-expanded", 'true');
+      });
+    }*/
+  }
 }
 
 

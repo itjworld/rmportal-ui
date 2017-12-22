@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger accordion-toggle" href="#collapseOne">
+                        <a role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger accordion-toggle" href="#collapseOne" (click)="open('collapseOne')">
                                 Locality</a>
                     </h4>
                 </div>
@@ -22,7 +22,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                        <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseTwo">Price</a>
+                        <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseTwo" (click)="open('collapseTwo')">Price</a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -39,7 +39,7 @@
             <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
-                            <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseThree">Gender</a>
+                            <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseThree" (click)="open('collapseThree')">Gender</a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
@@ -56,7 +56,7 @@
                 <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingFourth">
                             <h4 class="panel-title">
-                                <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFourth">Air Conditioner</a>
+                                <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFourth" (click)="open('collapseFourth')">Air Conditioner</a>
                             </h4>
                         </div>
                         <div id="collapseFourth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourth">
@@ -71,7 +71,7 @@
                     <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingFiveth">
                                 <h4 class="panel-title">
-                                    <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFiveth">Room Occupancy</a>
+                                    <a role="button"  data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed accordion-toggle" href="#collapseFiveth" (click)="open('collapseFiveth')">Room Occupancy</a>
                                 </h4>
                             </div>
                             <div id="collapseFiveth" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFiveth">

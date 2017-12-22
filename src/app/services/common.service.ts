@@ -10,8 +10,8 @@ import {IUserDetail} from '../beans/userdetail';
 
 @Injectable()
 export class CommonService{
-    //_URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
-    _URL:string="http://localhost:8080/rmportal";
+    _URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
+    //_URL:string="http://localhost:8080/rmportal";
     
     location:IDomain[];
     gender:IDomain[];
