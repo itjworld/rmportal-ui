@@ -221,3 +221,10 @@
   background: url(../images/avatar-sprit.png) no-repeat;
   background-position: -293px 0;
 }
+
+.fixed-footer{
+  position: fixed;    
+  bottom: 0;
+  width: 100%;
+  z-index: 1024;
+}

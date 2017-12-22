@@ -6,21 +6,39 @@ import { IDomain } from '../beans/Domain';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html'
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
  })
 export class SidebarComponent implements OnInit {
-  price:number=0;
   min:number=2000;
   max:number=30000;
   step:number=1000;
-  dispalyPrice:String;
   
   constructor(private _filterPorcessService:FilterPorcessService,private _commonService:CommonService) { }
 
   ngOnInit() {
-    this.dispalyPrice=this.min+"K";
+    this._commonService.dispalyPrice=this.min+"K";
     this._filterPorcessService.getTableInfomation([],0,0,0,[]);
   }
+
+  get price():number{
+    return this._commonService.price;
+  }
+
+  set price(value:number){
+    this._commonService.price=value;
+  }
+
+  get dispalyPrice():String{
+    return this._commonService.dispalyPrice;
+  }
+
+  set dispalyPrice(value:String){
+    this._commonService.dispalyPrice=value;
+  }
+
+  
+
   get location():any{
     return this._commonService.location;
   }

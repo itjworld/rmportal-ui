@@ -19,6 +19,9 @@ export class CommonService{
     rooms:IDomain[];
     city:IDomain[];
     address:any;
+    price:number=0;
+    dispalyPrice:String;
+ 
     
     constructor(private _http:Http){
         this.getLocation().subscribe((locationData)=>this.location=locationData);
