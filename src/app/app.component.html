@@ -1,4 +1,6 @@
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <router-outlet>
+            <span *ngIf="showLoader" class="loading"></span>
+    </router-outlet>
     <!--<app-footer></app-footer>-->
  

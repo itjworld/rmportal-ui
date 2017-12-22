@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Rx';
 import { FilterPorcessService } from '../services/filterPorcess.service';
 import { CommonService } from '../services/common.service';
 import { IDomain } from '../beans/Domain';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,10 +15,11 @@ export class SidebarComponent implements OnInit {
   max:number=30000;
   step:number=1000;
   
-  constructor(private _filterPorcessService:FilterPorcessService,private _commonService:CommonService) { }
+  constructor(private _filterPorcessService:FilterPorcessService,private _commonService:CommonService,private _loaderService: LoaderService) { }
 
   ngOnInit() {
     this._commonService.dispalyPrice=this.min+"K";
+    this._loaderService.display(true);
     this._filterPorcessService.getTableInfomation([],0,0,0,[]);
   }
 
@@ -71,12 +73,12 @@ export class SidebarComponent implements OnInit {
       this._commonService.gender=value
    }
   selectLocation():void{
-    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
+    this.caller();
   }
 
   selectPrice(event:any):void{
        Observable.interval(500).take(1).subscribe(x => {
-        this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
+        this.caller();
       });
   }
 
@@ -103,7 +105,7 @@ export class SidebarComponent implements OnInit {
           opt.checked=false;
         }
      });
-     this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
+     this.caller();
   }
 
   selectAirCondition(event:any):void{
@@ -118,11 +120,11 @@ export class SidebarComponent implements OnInit {
          opt.checked=false;
        }
     });
-    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
+    this.caller();
   }
 
   selectRooms():void{
-    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
+    this.caller();;
   }
 
   selectedLocation():number[] {
@@ -140,20 +142,9 @@ export class SidebarComponent implements OnInit {
     return this.roomType.filter(opt => opt.checked).map(opt => opt.id);
   }
 
-  open(id){
-    /*var element = document.getElementById(id);
-    console.log(id);
-    if(element.classList.contains('in')){
-        Observable.interval(200).take(1).subscribe(x => {
-        element.classList.remove("in");
-        element.setAttribute("aria-expanded", 'false');
-      });
-    }else{
-        Observable.interval(200).take(1).subscribe(x => {
-        element.classList.add("in");
-        element.setAttribute("aria-expanded", 'true');
-      });
-    }*/
+  private caller(){
+    this._loaderService.display(true);
+    this._filterPorcessService.getTableInfomation(this.selectedLocation(),this.price,this.selectedAirCondition(),this.selectedGender(),this.selectedRooms());
   }
 }
 

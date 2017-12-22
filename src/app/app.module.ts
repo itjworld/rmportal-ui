@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { AlertService } from './alert/alert.service';
 import { QueryComponent } from './query/query.component';
 import { RoomComponent } from './room/room.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { LoaderService } from './services/loader.service';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,10 @@ import { RegistrationComponent } from './registration/registration.component';
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
   ],
-  providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService],
-  bootstrap: [AppComponent]
+  providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService],
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+]
 })
 export class AppModule { }

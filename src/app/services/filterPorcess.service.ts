@@ -5,18 +5,22 @@ import { CommonService } from '../services/common.service';
 import { IEnquiry } from '../beans/enquiry';
 import {IInfomation} from '../beans/infomation';
 import 'rxjs/add/operator/toPromise';
+import { LoaderService } from '../services/loader.service';
 
 @Injectable()
 export class FilterPorcessService{
     cardList:IFilterInformation[];
     userDetail:IEnquiry;
     information:IInfomation;
-    constructor(private _commonService:CommonService){
+    constructor(private _commonService:CommonService,private _loaderService: LoaderService){
         
     }
 
     getTableInfomation(localities:any,price:any,acId:any,gender:any,rooms:any){
-        this._commonService.getDetails(localities,price,acId,gender,rooms).subscribe((detailData)=>this.cardList=detailData);
+        this._commonService.getDetails(localities,price,acId,gender,rooms).subscribe((detailData)=>{
+            this.cardList=detailData;
+            this._loaderService.display(false);
+        });
     }
 
     saveViewContactDetail(enquiry:any):Promise<IEnquiry>{
