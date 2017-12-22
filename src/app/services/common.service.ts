@@ -74,7 +74,10 @@ export class CommonService{
     
    saveMappingDetails(mapping:any):Observable<any>{
        return this._http.post(this._URL+"/api/v1/mapping/save",mapping)
-       .map((response:Response)=><any>response.json);
+       .catch(err =>  { 
+           console.log("****** exception generated" + err)
+        return Observable.throw(err); // observable needs to be returned or exception raised
+     }).map((response:Response)=><any>response.json);
         
     }
 
@@ -93,10 +96,12 @@ export class CommonService{
     .map((response:Response)=><boolean>response.json());
    }
 
-   updateRoomBooked(mapping:any):Observable<any>{
+   updateRoomBooked(mapping:String):Observable<boolean>{
     return this._http.post(this._URL+"/api/v1/room/update",mapping)
-    .map((response:Response)=><any>response.json);
-     
+    .map((response:Response)=><boolean>response.json());
  }
-
+ registration(registration:String):Observable<boolean>{
+    return this._http.post(this._URL+"/api/v1/registration",registration)
+    .map((response:Response)=><boolean>response.json());
+   }
 }

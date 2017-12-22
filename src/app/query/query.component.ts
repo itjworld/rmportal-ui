@@ -29,7 +29,7 @@ export class QueryComponent implements OnInit {
         else{
           this.alertService.error("error while executing Query");
            }
-    }));
+    }),(err => this.alertService.error("error while executing Query !")));
   }
 
 }
