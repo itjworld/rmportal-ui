@@ -82,7 +82,6 @@ export class RoomComponent implements OnInit {
    submitForm(){    
     this.alertService.clear();
     if (this.roomBookForm.dirty && this.roomBookForm.valid) {
-      let error : boolean = true;
       let roomBook:any={fName:this.roomBookForm.value.fName,lName:this.roomBookForm.value.lName,
         roomNo:this.roomBookForm.value.roomNo,desc:this.roomBookForm.value.desc,addressId:this.roomBookForm.value.addressId,
         relativeMobile:this.roomBookForm.value.relationMobile,
@@ -90,14 +89,15 @@ export class RoomComponent implements OnInit {
         email:this.roomBookForm.value.email,rent:this.roomBookForm.value.rent,
         security:this.roomBookForm.value.security,address:this.roomBookForm.value.address};
       console.log(roomBook);
-      this._commonService.updateRoomBooked(roomBook).subscribe((roomBook=>{
-          console.info("save");
-          if(!roomBook)
-          this.alertService.error("Room Booking failed !");
-        else{
+      this._commonService.updateRoomBooked(roomBook).subscribe(result=>{
+          console.info(result);
+        if(result){
           this.alertService.success("Room Booked Successfully");
           }
-      }));
+        else{          
+          this.alertService.error("Room Booking failed !");
+          }
+      }, err => this.alertService.error("Room Booking failed !"));
     }    
    }
 }

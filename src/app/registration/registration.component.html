@@ -1,0 +1,56 @@
+<div class="container">
+  
+  <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form name="form" [formGroup]="signupForm" (ngSubmit)="submitForm()" method="POST">
+        <h2>Please Sign Up <small>registration form</small></h2>
+        <hr class="colorgraph">
+        <alert></alert>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['fName'].valid && signupForm.controls['fName'].touched}">
+              <input type="text" name="fName" id="fName" [formControl]="signupForm.controls['fName']" class="form-control input-lg" placeholder="First Name" tabindex="1">
+              <div *ngIf="signupForm.controls['fName'].hasError('required') && signupForm.controls['fName'].touched" class="alert alert-danger">please enter first name.</div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['lName'].valid && signupForm.controls['lName'].touched}">
+              <input type="text" name="lName" id="lName" [formControl]="signupForm.controls['lName']" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+              <div *ngIf="signupForm.controls['lName'].hasError('required') && signupForm.controls['lName'].touched" class="alert alert-danger">please enter last name.</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['username'].valid && signupForm.controls['username'].touched}">
+          <input type="text" name="username" id="username" [formControl]="signupForm.controls['username']" class="form-control input-lg" placeholder="Username" tabindex="3">
+          <div *ngIf="signupForm.controls['username'].hasError('required') && signupForm.controls['username'].touched" class="alert alert-danger">please enter username.</div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['email'].valid && signupForm.controls['email'].touched}">
+          <input type="email" name="email" id="email" [formControl]="signupForm.controls['email']" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+          <div *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched" class="alert alert-danger">please enter email.</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['password'].valid && signupForm.controls['password'].touched}">
+              <input type="password" name="password" id="password" [formControl]="signupForm.controls['password']" class="form-control input-lg" placeholder="Password" tabindex="5">
+              <div *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched" class="alert alert-danger">please enter password.</div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group" [ngClass]="{'has-error':!signupForm.controls['cpassword'].valid && signupForm.controls['cpassword'].touched}">
+              <input type="password" name="cpassword" id="cpassword" [formControl]="signupForm.controls['cpassword']" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+              <div *ngIf="signupForm.controls['cpassword'].hasError('required') && signupForm.controls['cpassword'].touched" class="alert alert-danger">please confirm password.</div>
+            </div>
+          </div>
+        </div>
+             
+        <hr class="colorgraph">
+        <div class="row">
+            
+          <div class="col-xs-12 col-md-6"><input type="submit" value="Register" [disabled]="!signupForm.valid" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+          <div class="col-xs-12 col-md-6"><input type="reset" class="btn btn-success btn-block btn-lg" value="Cancel"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  </div>

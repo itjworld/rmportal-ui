@@ -50,7 +50,7 @@ export class AddressComponent implements OnInit {
     this._commonService.saveAddressDetails(address).subscribe((address=>{
         console.info("save");
         this.alertService.success("Address configuration saved");
-    }));
+    }), (err => this.alertService.error("Address configuration failed !")));
   }
    }
 

@@ -86,7 +86,7 @@ export class MappingComponent implements OnInit {
       this._commonService.saveMappingDetails(mapping).subscribe((mapping=>{
           console.info("save");
           this.alertService.success("Mapping configuration saved");
-      }));
+      }), err => this.alertService.error("Mapping configuration failed !"));
     }    
    }
 
