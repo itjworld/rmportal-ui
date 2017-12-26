@@ -228,3 +228,11 @@
   width: 100%;
   z-index: 1024;
 }
+
+.fa-2x {
+  font-size: 1.5em !important;
+}
+
+.navbar-brand-home{
+  padding: 10px;
+}
