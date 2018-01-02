@@ -16,5 +16,5 @@ ngOnInit() {
     this.loaderService.status.subscribe((val: boolean) => {
         this.showLoader = val;
     });
-}
+  }
 }

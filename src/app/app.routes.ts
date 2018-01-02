@@ -16,7 +16,8 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'query', component: QueryComponent },
     { path: 'room', component: RoomComponent },
-    { path: 'signup', component: RegistrationComponent }
+    { path: 'signup', component: RegistrationComponent },
+    { path: '**', component:HomeComponent},
   ];
 
   export const appRouterModule = RouterModule.forRoot(routes);

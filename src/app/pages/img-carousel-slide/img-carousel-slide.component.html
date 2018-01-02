@@ -1,0 +1,29 @@
+
+<div class="modal fade" id="ModalCarouselSlide" tabindex="-1" role="dialog" aria-labelledby="ModalCarouselLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+      <button type="button" class="close" data-dismiss="modal" style="margin: -13px;opacity:5!important;">&times;</button>
+    <div class="modal-content">
+      <div id="carousel-modal-img-slide" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-modal-img-slide" data-slide-to="i" class="{{i==0?'active':''}}" *ngFor="let item of items;let i = index"></li>
+        </ol>
+
+ <!-- Sliding images statring here --> 
+        <div class="carousel-inner" role="listbox"> 
+          <div class="item {{i==0?'active':''}}" *ngFor="let item of items;let i = index"> 
+              <img [src]="item.url" [alt]="item.alt" class="img-responsive" width="100%"> 
+          </div> 
+        </div> 
+  <!-- Next / Previous controls here -->
+  <a class="left carousel-control" href="#carousel-modal-img-slide" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-modal-img-slide" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  
+</div>
+    </div>
+  </div>
+</div>

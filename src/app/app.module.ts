@@ -26,6 +26,7 @@ import { QueryComponent } from './query/query.component';
 import { RoomComponent } from './room/room.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoaderService } from './services/loader.service';
+import { ImgCarouselSlideComponent } from './pages/img-carousel-slide/img-carousel-slide.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { LoaderService } from './services/loader.service';
     AlertComponent,
     QueryComponent,
     RoomComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ImgCarouselSlideComponent
 
 ],
   imports: [
