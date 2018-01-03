@@ -4,6 +4,7 @@ import { Router, Routes, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   isIn = false;   // store state
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("user");
-    this._router.navigate(['login']);
+    this._router.navigate(['home']);
   }
 
   checkCredentials( ): boolean{

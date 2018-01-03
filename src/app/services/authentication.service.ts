@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { CommonService } from '../services/common.service';
 import {IUserDetail} from '../beans/userdetail';
+import { AlertService } from '../alert/alert.service';
 
 export class User {
 
@@ -19,24 +20,25 @@ var users = [
 export class AuthenticationService {
   userDetail:IUserDetail;
   constructor(
-    private _router: Router, private _service : CommonService){}
+    private _router: Router, private _service : CommonService,private alertService: AlertService){}
 
   logout() {
     localStorage.removeItem("user");
-    this._router.navigate(['login']);
+    this._router.navigate(['home']);
   }
 
   login(user){
-    // var authenticatedUser = users.find(u => u.email === user.email);
+    this.alertService.clear();
     this._service.validate(user).subscribe((data)=>{
       this.userDetail=data;
       //console.log(this.userDetail);
       if (this.userDetail != null){
         localStorage.setItem("user", this.userDetail.username);
         this._router.navigate(['address']);      
-        return true;
+      }else{
+        this.alertService.error('Failed to login');
       }
-      return false;
+      
     })
     
 

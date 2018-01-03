@@ -1,0 +1,20 @@
+.navbar-default .navbar-brand {
+    color: #000!important;
+    font-weight: bold;
+}
+
+[aria-expanded="false"] .menu_open {
+    display: block;
+}
+
+[aria-expanded="false"] .menu_close {
+    display: none;
+}
+
+[aria-expanded="true"] .menu_open {
+    display: none;
+}
+
+[aria-expanded="true"] .menu_close {
+    display: block;
+}
