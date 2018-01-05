@@ -10,8 +10,8 @@ import {IUserDetail} from '../beans/userdetail';
 
 @Injectable()
 export class CommonService{
-    _URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
-    //_URL:string="http://localhost:8080/rmportal";
+    //_URL:string="http://springbootangular2-env.us-east-2.elasticbeanstalk.com";
+    _URL:string="http://localhost:8080/rmportal";
     
     location:IDomain[];
     gender:IDomain[];
@@ -106,5 +106,9 @@ export class CommonService{
  registration(registration:String):Observable<boolean>{
     return this._http.post(this._URL+"/api/v1/registration",registration)
     .map((response:Response)=><boolean>response.json());
+   }
+   getRecords():Observable<any>{
+    return  this._http.get(this._URL+"/api/v1/records")
+    .map((response:Response)=><any>response.json());
    }
 }

@@ -34,12 +34,13 @@ export class AuthenticationService {
       //console.log(this.userDetail);
       if (this.userDetail != null){
         localStorage.setItem("user", this.userDetail.username);
-        this._router.navigate(['address']);      
+        this._router.navigate(['record']);      
       }else{
+        console.log("failure");
         this.alertService.error('Failed to login');
       }
       
-    })
+    }, err => this.alertService.error("invlalid credentials !"))
     
 
   }

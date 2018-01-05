@@ -27,6 +27,8 @@ import { RoomComponent } from './room/room.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoaderService } from './services/loader.service';
 import { ImgCarouselSlideComponent } from './pages/img-carousel-slide/img-carousel-slide.component';
+import { RecordComponent } from './record/record.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 @NgModule({
@@ -49,11 +51,12 @@ import { ImgCarouselSlideComponent } from './pages/img-carousel-slide/img-carous
     QueryComponent,
     RoomComponent,
     RegistrationComponent,
-    ImgCarouselSlideComponent
+    ImgCarouselSlideComponent,
+    RecordComponent
 
 ],
   imports: [
-    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule    
+    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule   
   ],
   providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService],
   bootstrap: [AppComponent],
