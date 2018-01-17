@@ -6,13 +6,13 @@
                             <a href="javascript:void(0)" class="excel"><i class="fa fa-file-excel-o fa-3" aria-hidden="true"></i></a>
                             <a href="javascript:void(0)" class="pdf"><i class="fa fa-file-pdf-o fa-3" aria-hidden="true"></i></a>
                             <a href="javascript:void(0)" class="printer"><i class="fa fa-print fa-3" aria-hidden="true"></i></a>
-                            <a href="javascript:void(0)" class="printer"><i class="fa fa-envelope-o fa-3" aria-hidden="true"></i></a>
+                            <a href="javascript:void(0)" class="printer" (click)="print()"><i class="fa fa-envelope-o fa-3" aria-hidden="true"></i></a>
                     </div>
                     <div class="col-md-6">
                             <input  class="search pull-right" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
                     </div>
             </div>
-            <div class="col-md-12 table-responsive">
+            <div class="col-md-12 table-responsive" id="printSectionId" >
             <ng2-smart-table [settings]="settings" [source]="source" 
             
             (deleteConfirm)="onDeleteConfirm($event)"
