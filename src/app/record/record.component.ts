@@ -1,7 +1,8 @@
-import { Component} from '@angular/core';
+import { Component,ViewChild} from '@angular/core';
 import { CommonService } from './../services/common.service';
 import { Ng2SmartTableModule, ServerDataSource } from 'ng2-smart-table';
 import { Http } from '@angular/http';
+import { MailComponent } from '../mail/mail.component';
 
 @Component({
   selector: 'app-record',
@@ -10,6 +11,8 @@ import { Http } from '@angular/http';
 })
 export class RecordComponent {
 
+  @ViewChild(MailComponent)
+  private mSailComponent:MailComponent;
   
 
   

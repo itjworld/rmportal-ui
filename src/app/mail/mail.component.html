@@ -1,0 +1,54 @@
+
+
+<div class="modal fade" id="send-mail" tabindex="-1" role="dialog" aria-labelledby="send-mail-Label" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+      <button type="button" class="close" data-dismiss="modal" style="margin: -13px;opacity:5!important;" (click)="reset()">&times;</button>
+    <div class="modal-content">
+
+
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="panel panel-default">
+              <div class="panel-heading" >
+                  <h1>Send Mail</h1>
+              </div>
+          <form [formGroup]="mail" (ngSubmit)="submitForm()">
+          <div class="panel-body">
+              <div class="form-group">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope blue"></i></span>
+                      <input type="email" [formControl]="mail.controls['to']" name="to" placeholder="To" class="form-control" required>
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope blue"></i></span>
+                    <input type="email" [formControl]="mail.controls['cc']"  name="cc" placeholder="CC" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-comment  blue"></i></span>
+                      <input type="text" [formControl]="mail.controls['subject']" name="subject" placeholder="Subject" class="form-control" required>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-comment blue"></i></span>
+                      <textarea [formControl]="mail.controls['body']" name="body" rows="6" class="form-control" type="text" required></textarea>
+                  </div>
+              </div>
+              <div class="">
+              <button type="submit" class="btn btn-info pull-right" [disabled]="!mail.valid" >Send <span class="glyphicon glyphicon-send"></span></button>
+                  <button type="reset" value="Reset" name="reset" class="btn" id="reset">Reset <span class="glyphicon glyphicon-refresh"></span></button>
+              </div>
+          </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>

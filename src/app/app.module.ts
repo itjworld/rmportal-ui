@@ -29,6 +29,7 @@ import { LoaderService } from './services/loader.service';
 import { ImgCarouselSlideComponent } from './pages/img-carousel-slide/img-carousel-slide.component';
 import { RecordComponent } from './record/record.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MailComponent } from './mail/mail.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     RoomComponent,
     RegistrationComponent,
     ImgCarouselSlideComponent,
-    RecordComponent
+    RecordComponent,
+    MailComponent
 
 ],
   imports: [

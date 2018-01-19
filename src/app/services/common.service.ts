@@ -110,4 +110,13 @@ export class CommonService{
    getRecords():string{
     return this._URL+"/api/v1/records";
    }
+
+   sendMail(mail:any):Observable<any>{
+    return this._http.post(this._URL+"/api/v1/sendMail",mail)
+    .catch(err =>  { 
+        console.log("****** exception generated" + err)
+     return Observable.throw(err); // observable needs to be returned or exception raised
+  }).map((response:Response)=><any>response.json);
+     
+ }
 }
