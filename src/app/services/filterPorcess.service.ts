@@ -39,4 +39,6 @@ export class FilterPorcessService{
     getContactInfomation(_id:number){
         this._commonService.getContactInfomation(_id).subscribe((inform)=>this.information=inform);
     }
+
+    
 }

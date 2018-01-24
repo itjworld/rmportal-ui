@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http,Response } from '@angular/http';
+import { Http,Response,RequestOptions,Headers } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IDomain} from '../beans/domain';
 import {IFilterInformation} from '../beans/filterInformation';
@@ -119,4 +119,13 @@ export class CommonService{
   }).map((response:Response)=><any>response.json);
      
  }
+    login(user:any):Observable<any>{
+        let credentials = "username="+user.username+"&password="+user.password;
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded','x-www-form-rm-call':true });
+        let options = new RequestOptions({ headers: headers });
+        return this._http.post(this._URL+"/login",credentials,options)
+     .map((response:Response)=><any>response.json());
+   }
+
+  } 
 }
