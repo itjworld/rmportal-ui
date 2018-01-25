@@ -112,7 +112,7 @@ export class CommonService{
    }
 
    sendMail(mail:any):Observable<any>{
-    return this._http.post(this._URL+"/api/v1/sendMail",mail)
+    return this._http.post(this._URL+"/api/v1/sendMailAsPdf",mail)
     .catch(err =>  { 
         console.log("****** exception generated" + err)
      return Observable.throw(err); // observable needs to be returned or exception raised
