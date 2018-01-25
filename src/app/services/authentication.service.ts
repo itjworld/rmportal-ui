@@ -24,12 +24,13 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("ROLES");
     this._router.navigate(['home']);
   }
 
   login(user){
     this.alertService.clear();
-    this._service.validate(user).subscribe((data)=>{
+  /*  this._service.validate(user).subscribe((data)=>{
       this.userDetail=data;
       //console.log(this.userDetail);
       if (this.userDetail != null){
@@ -40,9 +41,20 @@ export class AuthenticationService {
         this.alertService.error('Failed to login');
       }
       
-    }, err => this.alertService.error("invlalid credentials !"))
-    
-
+    }, err => this.alertService.error("invlalid credentials !"));
+    */
+    this._service.login(user).subscribe((data)=>{
+       if(data['status']==200){
+        localStorage.setItem("user", data['USER']);
+        localStorage.setItem("ROLES", data['ROLES']);
+        this._router.navigate(['record']);
+       }else if(data['status']==401){
+          this.alertService.error(data['message']);
+       }else{
+         this.alertService.error('Failed to login');
+       }
+        
+    });
   }
 
    checkCredentials( ){

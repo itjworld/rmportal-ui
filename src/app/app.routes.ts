@@ -10,7 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 
 // Route Configuration
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '',component:HomeComponent},
     { path: 'home', component:HomeComponent},
     { path: 'mapping', component: MappingComponent },
     { path: 'address', component: AddressComponent },

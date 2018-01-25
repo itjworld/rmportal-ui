@@ -23,7 +23,7 @@
                     <li><a [routerLink]="['/address']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Address Config</a></li>
                     <li><a [routerLink]="['/room']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Book Room</a></li>
                     <li><a href="javascript:void(0)" data-toggle="collapse" data-target="#headerNavbar" target="_self">Change Password</a></li>
-                    <li><a [routerLink]="['/query']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Execute Query</a></li>
+                    <li *ngIf="hasRole('ROLE_ADMID') == true"><a [routerLink]="['/query']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Execute Query</a></li>
                     <li><a [routerLink]="['/record']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Update Records</a></li>
                     <li><a href="javascript:void(0)" (click)="logout()" data-toggle="collapse" data-target="#headerNavbar" target="_self">Logout</a></li>
                 </ul>
