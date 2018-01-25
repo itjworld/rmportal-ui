@@ -177,7 +177,8 @@ ng2-smart-table .ng2-smart-title{
   background-color:#b5ddf0;
 }
 ng2-smart-table .ng2-smart-actions,
-ng2-smart-table .ng2-smart-filters{
+ng2-smart-table .ng2-smart-filters,
+ng2-smart-table ng2-smart-table-pager{
   display: none;
 }
 

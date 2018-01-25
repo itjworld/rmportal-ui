@@ -26,6 +26,11 @@ export class RecordComponent {
     edit: {
       confirmSave: true,
     },
+    pager:{
+         display:true,
+         perPage:10
+      }
+      ,
     columns: {
       id: {
         title: 'ID',
@@ -63,29 +68,26 @@ export class RecordComponent {
     //}));
     //console.log(this.data);
     // this.source = new LocalDataSource(this.data);
-    this.source = new ServerDataSource(this._http,{ endPoint: this._commonService.getRecords() });
+    this.source = new ServerDataSource(this._http,
+      { endPoint: this._commonService.getRecords(),
+        pagerLimitKey:"_limit",
+        pagerPageKey:"_page",
+        filterFieldKey:'_searchParam',
+        dataKey: 'data',
+        totalKey:'total',
+        
+      });
+    
   }
 
   onSearch(query: string = '') {
-    this.source.setFilter([
-      // fields we want to inclue in the search
-      {
-        field: 'id',
+    this.source.setFilter([{
+        field: 'searchParam',
         search: query,
       },
-      {
-        field: 'fName',
-        search: query,
-      },
-      {
-        field: 'mobile',
-        search: query,
-      },
-      {
-        field: 'email',
-        search: query,
-      },
+      
     ], false);
+    this.source.getFilter();
     // second parameter specifying whether to perform 'AND' or 'OR' search
     // (meaning all columns should contain search query or at least one)
     // 'AND' by default, so changing to 'OR' by setting false here
@@ -104,7 +106,7 @@ export class RecordComponent {
     if (window.confirm('Are you sure you want to save?')) {
       console.log("save",event.newData);
       event.confirm.resolve(event.newData);
-      
+      this._commonService.updateRecords(event.newData);
     } else {
       event.confirm.reject();
     }

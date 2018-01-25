@@ -181,3 +181,12 @@
 :host /deep/ ng2-smart-table .ng2-smart-filters{
   display: none;
 }
+
+:host /deep/ ng2-smart-table ng2-smart-table-pager{
+  float: right;
+}
+:host /deep/ ng2-smart-table ng2-smart-table-pager .page-link-prev,
+:host /deep/ ng2-smart-table ng2-smart-table-pager .page-link-next,
+:host /deep/ ng2-smart-table ng2-smart-table-pager .ng2-smart-pagination{
+  font-size: 14px  !important;
+}
