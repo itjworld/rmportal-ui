@@ -3,6 +3,7 @@ import { CommonService } from './../services/common.service';
 import { Ng2SmartTableModule, ServerDataSource } from 'ng2-smart-table';
 import { Http } from '@angular/http';
 import { MailComponent } from '../mail/mail.component';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-record',
@@ -32,8 +33,8 @@ export class RecordComponent {
       }
       ,
     columns: {
-      id: {
-        title: 'ID',
+      roomNo: {
+        title: 'Room No',
         filter: false,
       },
       fName: {
@@ -61,23 +62,28 @@ export class RecordComponent {
 
   source:  ServerDataSource;
 
-  constructor(private _commonService : CommonService,private _http:Http) {
+  constructor(private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
     //this._commonService.getRecords().subscribe((result=>{
       //this.data = result;
       //this.source = new LocalDataSource(this.data);
     //}));
     //console.log(this.data);
     // this.source = new LocalDataSource(this.data);
-    this.source = new ServerDataSource(this._http,
-      { endPoint: this._commonService.getRecords(),
-        pagerLimitKey:"_limit",
-        pagerPageKey:"_page",
-        filterFieldKey:'_searchParam',
-        dataKey: 'data',
-        totalKey:'total',
-        
-      });
+    this.loadServerData();
     
+  }
+
+  loadServerData(){
+    this.source = new ServerDataSource(this._http,
+      {
+        endPoint: this._commonService.getRecords(),
+        pagerLimitKey: "_limit",
+        pagerPageKey: "_page",
+        filterFieldKey: '_searchParam',
+        dataKey: 'data',
+        totalKey: 'total',
+
+      });
   }
 
   onSearch(query: string = '') {
@@ -94,19 +100,36 @@ export class RecordComponent {
   }
   
   onDeleteConfirm(event) {
+    this.alertService.clear();
     if (window.confirm('Are you sure you want to delete?')) {
-      console.log("Delete",event.data.id);
+     // console.log("Delete",event.data.id);
       event.confirm.resolve();
+      this._commonService.deleteRecords(event.data).subscribe((info=>{
+        console.info("deleted : " + info.data);
+        this.alertService.success("Record DSeleted Successfully");
+        this.loadServerData();
+      }), (err => {
+        this.alertService.success("Problem while deleting record !");
+        this.loadServerData();
+      }));
     } else {
       event.confirm.reject();
     }
   }
 
   onSaveConfirm(event) {
+    this.alertService.clear();
     if (window.confirm('Are you sure you want to save?')) {
-      console.log("save",event.newData);
+    //  console.log(event.newData);
       event.confirm.resolve(event.newData);
-      this._commonService.updateRecords(event.newData);
+      this._commonService.updateRecords(event.newData).subscribe((info=>{
+        console.info("updated : " + info.body);
+        this.alertService.success("Record updated Successfully");
+        this.loadServerData();
+      }), (err => {
+        this.alertService.success("Problem while updating record !");
+        this.loadServerData();
+      }));
     } else {
       event.confirm.reject();
     }

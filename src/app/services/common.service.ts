@@ -127,9 +127,18 @@ export class CommonService{
      .map((response:Response)=><any>response.json());
    }
 
-   updateRecords(record:String):Observable<any>{
-    console.log("****** record : " + record)
-    return this._http.post(this._URL+"/api/v1/updaterecords",record)
+   updateRecords(record:any):Observable<any>{
+    // console.log("****** record : " + JSON.stringify(record))
+    return this._http.post(this._URL+"/api/v1/guest/update",record)
+    .catch(err =>  { 
+        console.log("****** exception generated" + err)
+     return Observable.throw(err); // observable needs to be returned or exception raised
+  }).map((response:Response)=><any>response.json);
+   }
+
+   deleteRecords(record:any):Observable<any>{
+    //console.log("****** record : " + JSON.stringify(record))
+    return this._http.post(this._URL+"/api/v1/guest/delete",record)
     .catch(err =>  { 
         console.log("****** exception generated" + err)
      return Observable.throw(err); // observable needs to be returned or exception raised
