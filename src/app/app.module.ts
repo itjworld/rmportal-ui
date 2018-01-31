@@ -30,6 +30,7 @@ import { ImgCarouselSlideComponent } from './pages/img-carousel-slide/img-carous
 import { RecordComponent } from './record/record.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MailComponent } from './mail/mail.component';
+import { MyrecordsComponent } from './myrecords/myrecords.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { MailComponent } from './mail/mail.component';
     RegistrationComponent,
     ImgCarouselSlideComponent,
     RecordComponent,
-    MailComponent
+    MailComponent,
+    MyrecordsComponent
 
 ],
   imports: [

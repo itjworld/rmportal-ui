@@ -7,6 +7,7 @@ import { QueryComponent } from './query/query.component';
 import { RoomComponent } from './room/room.component';
 import { RecordComponent } from './record/record.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { MyrecordsComponent } from './myrecords/myrecords.component';
 
 // Route Configuration
 export const routes: Routes = [
@@ -18,8 +19,9 @@ export const routes: Routes = [
     { path: 'query', component: QueryComponent },
     { path: 'room', component: RoomComponent },
     { path: 'record', component: RecordComponent },
-    { path: 'signup', component: RegistrationComponent },
-  { path: '**', component:HomeComponent},
+    { path: 'signup', component: RegistrationComponent },    
+    { path: 'myrecords', component: MyrecordsComponent },
+    { path: '**', component:HomeComponent},
   ];
 
   export const appRouterModule = RouterModule.forRoot(routes);
