@@ -4,6 +4,7 @@ import { Ng2SmartTableModule, ServerDataSource } from 'ng2-smart-table';
 import { Http } from '@angular/http';
 import { MailComponent } from '../mail/mail.component';
 import { AlertService } from '../alert/alert.service';
+import { PopupService } from '../popup/popup.service';
 
 @Component({
   selector: 'app-record',
@@ -62,18 +63,7 @@ export class RecordComponent {
 
   source:  ServerDataSource;
 
-  constructor(private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
-    //this._commonService.getRecords().subscribe((result=>{
-      //this.data = result;
-      //this.source = new LocalDataSource(this.data);
-    //}));
-    //console.log(this.data);
-    // this.source = new LocalDataSource(this.data);
-    this.loadServerData();
-    
-  }
-
-  loadServerData(){
+  constructor(private popupService :PopupService,private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
     this.source = new ServerDataSource(this._http,
       {
         endPoint: this._commonService.getRecords(),
@@ -84,7 +74,10 @@ export class RecordComponent {
         totalKey: 'total',
 
       });
+    
   }
+
+  
 
   onSearch(query: string = '') {
     this.source.setFilter([{
@@ -101,38 +94,40 @@ export class RecordComponent {
   
   onDeleteConfirm(event) {
     this.alertService.clear();
-    if (window.confirm('Are you sure you want to delete?')) {
-     // console.log("Delete",event.data.id);
-      event.confirm.resolve();
-      this._commonService.deleteRecords(event.data).subscribe((info=>{
-        console.info("deleted : " + info.data);
-        this.alertService.success("Record DSeleted Successfully");
-        this.loadServerData();
+    var that=this;
+    this.popupService.confirmThis({body:"Are you sure you want to delete?",header:'Alert'
+  ,color:'#c9302c',cancelBtnClass:'btn-primary',confirmBtnClass:'btn-success',
+  modalSizeClass:'modal-sm'},function(){
+      console.log("delete"+that);
+      that._commonService.deleteRecords(event.data).subscribe((info=>{
+        console.info("deleted : ");
+        event.confirm.resolve();
+        that=null;
       }), (err => {
-        this.alertService.success("Problem while deleting record !");
-        this.loadServerData();
+        event.confirm.resolve();
       }));
-    } else {
+    },function(){
       event.confirm.reject();
-    }
+    });
   }
 
   onSaveConfirm(event) {
     this.alertService.clear();
-    if (window.confirm('Are you sure you want to save?')) {
-    //  console.log(event.newData);
-      event.confirm.resolve(event.newData);
-      this._commonService.updateRecords(event.newData).subscribe((info=>{
+    var that=this;
+    this.popupService.confirmThis({body:"Are you sure you want to update?",header:'Alert'
+    ,color:'#31b0d5',cancelBtnClass:'btn-primary',confirmBtnClass:'btn-success',
+    modalSizeClass:'modal-sm'},function(){
+      console.log("delete"+that);
+      that._commonService.updateRecords(event.newData).subscribe((info=>{
         console.info("updated : " + info.body);
-        this.alertService.success("Record updated Successfully");
-        this.loadServerData();
+        event.confirm.resolve(event.newData);
+        that=null;
       }), (err => {
-        this.alertService.success("Problem while updating record !");
-        this.loadServerData();
+        event.confirm.resolve();
       }));
-    } else {
+    },function(){
       event.confirm.reject();
-    }
+    });
   }
 
   print(){

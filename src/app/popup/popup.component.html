@@ -1,0 +1,27 @@
+<div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
+  <div class="modal-dialog {{message.size}}" role="document">
+  <div class="modal-content" [style.border]="message.border">
+        <div class="modal-header" [style.background-color]="message.color">
+                <h4 class="modal-title">{{message.header}}</h4>
+        </div>
+
+<div class="modal-body">
+      <div class="row">
+          <div class="col-md-12">
+              <h5 class="text-center">{{message.body}}</h5>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <p class="text-center">
+                  <a *ngIf="message.showCancelBtn" (click)="message.noFn()">
+                      <button class="btn {{message.cancelBtnClass?message.cancelBtnClass:'btn-pm'}}">{{message.cancelBtnContent}}</button>
+                  </a>
+                  <a    (click)="message.siFn()">
+                      <button  class="btn {{message.confirmBtnClass?message.confirmBtnClass:'btn-sc'}}" >{{message.confirmBtnContent}}</button>
+                  </a>
+              </p>
+          </div>
+          </div></div></div>
+      </div>
+   </div>

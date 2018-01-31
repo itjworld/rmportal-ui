@@ -31,6 +31,8 @@ import { RecordComponent } from './record/record.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MailComponent } from './mail/mail.component';
 import { MyrecordsComponent } from './myrecords/myrecords.component';
+import { PopupComponent } from './popup/popup.component';
+import { PopupService } from './popup/popup.service';
 
 
 @NgModule({
@@ -56,13 +58,14 @@ import { MyrecordsComponent } from './myrecords/myrecords.component';
     ImgCarouselSlideComponent,
     RecordComponent,
     MailComponent,
-    MyrecordsComponent
+    MyrecordsComponent,
+    PopupComponent
 
 ],
   imports: [
     BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule   
   ],
-  providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService],
+  providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService,PopupService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

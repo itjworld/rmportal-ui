@@ -1,0 +1,10 @@
+.modal-header {
+    padding: 8px !important;
+}
+    
+.modal-header{
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+}
+
+
