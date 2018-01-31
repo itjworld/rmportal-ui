@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonService } from './../services/common.service';
 import {AddressConfig} from '../beans/address';
-//import { from } from 'rxjs/observable/from';
 import {AuthenticationService} from './../services/authentication.service';
 import { AlertService } from '../alert/alert.service';
+
 
 @Component({  
   selector: 'app-address',
@@ -41,17 +41,19 @@ export class AddressComponent implements OnInit {
    }
 
    submitForm(){
-    this.alertService.clear();
-    if (this.addressForm.dirty && this.addressForm.valid) {
-    let address:any={name:this.addressForm.value.fName + " " + this.addressForm.value.lName,email:this.addressForm.value.email,
-      mobile:this.addressForm.value.mobile,street1:this.addressForm.value.street1,
-      street2:this.addressForm.value.street2,location:this.addressForm.value.location};
-    console.log(address);
-    this._commonService.saveAddressDetails(address).subscribe((address=>{
-        console.info("save");
-        this.alertService.success("Address configuration saved");
-    }), (err => this.alertService.error("Address configuration failed !")));
-  }
+          this.alertService.clear();
+          if (this.addressForm.dirty && this.addressForm.valid) {
+          let address:any={name:this.addressForm.value.fName + " " + this.addressForm.value.lName,email:this.addressForm.value.email,
+            mobile:this.addressForm.value.mobile,street1:this.addressForm.value.street1,
+            street2:this.addressForm.value.street2,location:this.addressForm.value.location};
+          console.log(address);
+          this._commonService.saveAddressDetails(address).subscribe((address=>{
+              console.info("save");
+              this.alertService.success("Address configuration saved");
+          }), (err => this.alertService.error("Address configuration failed !")));
+        }
+
+        
    }
 
 }
