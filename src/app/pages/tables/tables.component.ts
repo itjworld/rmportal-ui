@@ -7,6 +7,7 @@ import { ImgCarouselSlideComponent } from '../../pages/img-carousel-slide/img-ca
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
+  styleUrls: ['./tables.component.css'],
   
 })
 

@@ -25,7 +25,12 @@
                     {{c.content | capitalize}}
                 </div>
                 <div class="card-text">
-                    <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                    <div class="row">
+                        <div class="col-sm-6" style="margin-left: 5px;"><i class="fa fa-bus gap-50" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i><div class="tt"><span style="margin-right: 10px;">Furnished</span><span>Non AC</span></div></div>
+                        <div class="col-sm-6 text-right"><i class="fa fa-wifi gap-30" aria-hidden="true"></i><i class="fa fa-battery-empty gap-15" aria-hidden="true"></i><div class="text-right tt" >1 + Amenities</div></div>
+                    </div>
+                </div>
+                <div class="card-text">
                     <button class="btn btn-primary btn-sm pull-center" data-toggle="modal" data-target="#viewContact" (click)="setReference(c.id)">Send SMS</button>
                     <button class="btn btn-info btn-sm pull-right" id="viewContactId" data-toggle="modal" data-target="#viewContact" (click)="setReference(c.id)">View Contact</button>
                 </div>
