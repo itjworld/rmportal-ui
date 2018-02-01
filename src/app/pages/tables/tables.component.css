@@ -18,3 +18,9 @@
 .col-sm-6 {
     width: 49% !important;
 }
+
+.feature-room,
+.feature-room:focus{
+    color: #000 !important;
+    text-decoration: none !important;
+}
