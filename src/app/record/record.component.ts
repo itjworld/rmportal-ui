@@ -52,6 +52,7 @@ export class RecordComponent {
       }
       ,
     columns: {
+      
       roomNo: {
         title: 'Room No',
         filter: false,
