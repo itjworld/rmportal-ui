@@ -133,7 +133,7 @@ export class CommonService {
             .catch(err => {
                 console.log("****** exception generated" + err)
                 return Observable.throw(err); // observable needs to be returned or exception raised
-            }).map((response: Response) => <any>response.json);
+            }).map((response: Response) => <any>response.json());
     }
 
     deleteRecords(record: any): Observable<any> {
@@ -142,15 +142,15 @@ export class CommonService {
             .catch(err => {
                 console.log("****** exception generated" + err)
                 return Observable.throw(err); // observable needs to be returned or exception raised
-            }).map((response: Response) => <any>response.json);
+            }).map((response: Response) => <any>response.json());
     }
 
     getMyRecords(username:any): Observable<any> {
-        return this._http.get(this._URL + "/api/v1/myrecords/" + username)
+        return this._http.post(this._URL + "/api/v1/myrecords", username)
         .catch(err => {
             console.log("****** exception generated" + err)
             return Observable.throw(err); // observable needs to be returned or exception raised
-        }).map((response: Response) => <any>response.json);
+        }).map((response: Response) => <any>response.json());
     }
 
 }

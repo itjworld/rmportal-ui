@@ -21,6 +21,7 @@ export class MyrecordsComponent {
   settings = {
     tableClass:'table table-bordered',
     tableId:'tableId',
+    actions: false,
     delete: {
       confirmDelete: true,
     },
@@ -32,31 +33,31 @@ export class MyrecordsComponent {
          perPage:10
       }
       ,
-    columns: {
-      roomNo: {
-        title: 'Room No',
-        filter: false,
-      },
-      fName: {
-        title: 'Name',
-        filter: false,
-      },
-      mobile: {
-        title: 'Mobile',
-        filter: false,
-      },
-      email: {
-        title: 'Email',
-        filter: false,
-      },
-      rent: {
-        title: 'Rent',
-        filter: false,
-      },
-      security: {
-        title: 'Security',
-        filter: false,
-      },
+      columns: {
+        id: {
+          title: 'Id',
+          filter: false,
+        },
+        rent: {
+          title: 'Rent',
+          filter: false,
+        },
+        elecBillPaid: {
+          title: 'Electricity Paid',
+          filter: false,
+        },
+        electricBill: {
+          title: 'Electricity Bill',
+          filter: false,
+        },
+        security: {
+          title: 'Security',
+          filter: false,
+        },
+        currentMonth: {
+          title: 'Month',
+          filter: false,
+        },
     },
   };
 
@@ -64,11 +65,12 @@ export class MyrecordsComponent {
 
   constructor(private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
     this._commonService.getMyRecords("akk.anilkundu@gmail.com").subscribe((result=>{
-    this.data = result;
+     // console.log("hi",result.data);
+    this.data = result.data;
     this.source = new LocalDataSource(this.data);
     }));
     console.log(this.data);
-     this.source = new LocalDataSource(this.data);
+    //  this.source = new LocalDataSource(this.data);
     // this.loadServerData();
     
   }
