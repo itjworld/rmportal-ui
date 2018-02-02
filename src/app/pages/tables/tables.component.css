@@ -1,0 +1,26 @@
+.gap-30{
+    margin-right: 30px;
+}
+
+.gap-15{
+    margin-right: 15px;
+}
+
+.gap-50{
+    margin-right: 50px;
+}
+
+.tt{
+    transform:rotate(0deg) translate(-10px);
+    font-size: 11px;
+}
+
+.col-sm-6 {
+    width: 49% !important;
+}
+
+.feature-room,
+.feature-room:focus{
+    color: #000 !important;
+    text-decoration: none !important;
+}

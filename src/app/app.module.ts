@@ -33,6 +33,7 @@ import { MailComponent } from './mail/mail.component';
 import { MyrecordsComponent } from './myrecords/myrecords.component';
 import { PopupComponent } from './popup/popup.component';
 import { PopupService } from './popup/popup.service';
+import { RoomInformComponent } from './pages/room-inform/room-inform.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { PopupService } from './popup/popup.service';
     RecordComponent,
     MailComponent,
     MyrecordsComponent,
-    PopupComponent
+    PopupComponent,
+    RoomInformComponent
 
 ],
   imports: [

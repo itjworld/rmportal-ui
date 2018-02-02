@@ -3,10 +3,12 @@ import { FilterPorcessService } from '../../services/filterPorcess.service';
 import { ContactsComponent } from '../../pages/contacts/contacts.component';
 import { ContactInfomrationComponent } from '../../pages/contactinfomration/contactInfomration.component';
 import { ImgCarouselSlideComponent } from '../../pages/img-carousel-slide/img-carousel-slide.component';
+import { RoomInformComponent } from '../../pages/room-inform/room-inform.component';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
+  styleUrls: ['./tables.component.css'],
   
 })
 
@@ -20,6 +22,10 @@ export class TablesComponent implements OnInit {
 
   @ViewChild(ImgCarouselSlideComponent)
   private imgCarouselSlideComponent:ImgCarouselSlideComponent;
+
+  @ViewChild(RoomInformComponent)
+  private roomInformComponent:RoomInformComponent;
+  
   
   constructor(private _filterService:FilterPorcessService) { }
 
