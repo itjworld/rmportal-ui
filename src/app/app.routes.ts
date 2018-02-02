@@ -8,6 +8,7 @@ import { RoomComponent } from './room/room.component';
 import { RecordComponent } from './record/record.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MyrecordsComponent } from './myrecords/myrecords.component';
+import { RentdetailComponent } from './rentdetail/rentdetail.component';
 
 // Route Configuration
 export const routes: Routes = [
@@ -21,6 +22,8 @@ export const routes: Routes = [
     { path: 'record', component: RecordComponent },
     { path: 'signup', component: RegistrationComponent },    
     { path: 'myrecords', component: MyrecordsComponent },
+    { path: 'rent-detail/:id', component: RentdetailComponent },
+    
     { path: '**', component:HomeComponent},
   ];
 

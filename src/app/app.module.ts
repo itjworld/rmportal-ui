@@ -34,6 +34,7 @@ import { MyrecordsComponent } from './myrecords/myrecords.component';
 import { PopupComponent } from './popup/popup.component';
 import { PopupService } from './popup/popup.service';
 import { RoomInformComponent } from './pages/room-inform/room-inform.component';
+import { RentdetailComponent } from './rentdetail/rentdetail.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { RoomInformComponent } from './pages/room-inform/room-inform.component';
     MailComponent,
     MyrecordsComponent,
     PopupComponent,
-    RoomInformComponent
+    RoomInformComponent,
+    RentdetailComponent
 
 ],
   imports: [

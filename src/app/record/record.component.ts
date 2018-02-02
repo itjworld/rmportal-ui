@@ -6,6 +6,8 @@ import { MailComponent } from '../mail/mail.component';
 import { AlertService } from '../alert/alert.service';
 import { PopupService } from '../popup/popup.service';
 
+
+
 @Component({
   selector: 'app-record',
   templateUrl: './record.component.html',
@@ -15,6 +17,8 @@ export class RecordComponent {
 
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
+
+ 
   
 
   
@@ -37,6 +41,7 @@ export class RecordComponent {
       roomNo: {
         title: 'Room No',
         filter: false,
+        
       },
       fName: {
         title: 'Name',
@@ -53,6 +58,10 @@ export class RecordComponent {
       rent: {
         title: 'Rent',
         filter: false,
+        type:'html',
+        valuePrepareFunction: (cell,row) => { 
+          return "<a href='/rent-detail/"+row.id+"'>"+row.rent+"</a>";
+        },
       },
       security: {
         title: 'Security',
@@ -137,5 +146,7 @@ export class RecordComponent {
     popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="assets/css/record.component.css" /></head><body onload="window.print()">' + innerContents + '</html>');
     popupWinindow.document.close();
   } 
+
+  
   
 }

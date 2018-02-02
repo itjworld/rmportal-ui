@@ -153,4 +153,20 @@ export class CommonService {
         }).map((response: Response) => <any>response.json());
     }
 
+    getRentDetailById(_id:number): Observable<any> {
+        return this._http.get(this._URL + "/api/v1/rent-detail", { params: {id:_id}})
+        .catch(err => {
+            return Observable.throw(err); 
+        }).map((response: Response) => <any>response.json());
+    }
+
+    updateRentDetail(detail: any): Observable<any> {
+        // console.log("****** record : " + JSON.stringify(record))
+        return this._http.post(this._URL + "/api/v1/rent-detail/update", detail)
+            .catch(err => {
+                console.log("****** exception generated" + err)
+                return Observable.throw(err); // observable needs to be returned or exception raised
+            }).map((response: Response) => <any>response.json());
+    }
+
 }
