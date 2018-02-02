@@ -5,6 +5,7 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 import { Http } from '@angular/http';
 import { MailComponent } from '../mail/mail.component';
 import { PopupService } from '../popup/popup.service';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-rentdetail',
@@ -17,14 +18,15 @@ export class RentdetailComponent implements OnInit {
 
   private id;number;
   source:  LocalDataSource;
-  constructor(private route: ActivatedRoute,private _commonService : CommonService,private _http:Http,private popupService :PopupService) {
+  constructor(private _loaderService: LoaderService,private route: ActivatedRoute,private _commonService : CommonService,private _http:Http,private popupService :PopupService) {
      this.route.params.subscribe(params => {
       this.id = +params['id']; 
-        this.loadData();
+        
       });
    }
 
   ngOnInit() {
+    this.loadData();
   }
 
   data:any;
@@ -34,6 +36,7 @@ export class RentdetailComponent implements OnInit {
     actions: {
       position: 'right',
       delete:false,
+      add:false,
     },
     edit: {
       confirmSave: true,
@@ -88,7 +91,6 @@ export class RentdetailComponent implements OnInit {
     this.popupService.confirmThis({body:"Are you sure you want to update?",header:'Alert'
     ,color:'#31b0d5',cancelBtnClass:'btn-primary',confirmBtnClass:'btn-success',
     modalSizeClass:'modal-sm'},function(){
-      console.log("delete"+that);
       that._commonService.updateRentDetail(event.newData).subscribe((info=>{
         console.info("updated : " + info.body);
         event.confirm.resolve(event.newData);
@@ -111,9 +113,11 @@ export class RentdetailComponent implements OnInit {
   } 
 
   loadData(){
+    this._loaderService.display(true);
     this._commonService.getRentDetailById(this.id).subscribe((result=>{
       this.data = result.data;
       this.source = new LocalDataSource(this.data);
+      this._loaderService.display(false);
    }));
   }
 

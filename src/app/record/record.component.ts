@@ -17,15 +17,29 @@ export class RecordComponent {
 
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
-
- 
-  
-
   
   data:any;
+  source:  ServerDataSource;
+  constructor(private popupService :PopupService,private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
+    this.source = new ServerDataSource(this._http,
+      {
+        endPoint: this._commonService.getRecords(),
+        pagerLimitKey: "_limit",
+        pagerPageKey: "_page",
+        filterFieldKey: '_searchParam',
+        dataKey: 'data',
+        totalKey: 'total',
+
+      });
+    
+  }
   settings = {
     tableClass:'table table-bordered',
     tableId:'tableId',
+    actions: {
+      position: 'right',
+      add:false,
+    },
     delete: {
       confirmDelete: true,
     },
@@ -60,7 +74,7 @@ export class RecordComponent {
         filter: false,
         type:'html',
         valuePrepareFunction: (cell,row) => { 
-          return "<a href='/rent-detail/"+row.id+"'>"+row.rent+"</a>";
+          return "<a href='/rent-detail/"+row.id+"' style='color:#fff'>"+row.rent+"</a>";
         },
       },
       security: {
@@ -70,25 +84,7 @@ export class RecordComponent {
     },
   };
 
-  source:  ServerDataSource;
-
-  constructor(private popupService :PopupService,private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
-    this.source = new ServerDataSource(this._http,
-      {
-        endPoint: this._commonService.getRecords(),
-        pagerLimitKey: "_limit",
-        pagerPageKey: "_page",
-        filterFieldKey: '_searchParam',
-        dataKey: 'data',
-        totalKey: 'total',
-
-      });
-    
-  }
-
-  
-
-  onSearch(query: string = '') {
+ onSearch(query: string = '') {
     this.source.setFilter([{
         field: 'searchParam',
         search: query,
@@ -96,9 +92,6 @@ export class RecordComponent {
       
     ], false);
     this.source.getFilter();
-    // second parameter specifying whether to perform 'AND' or 'OR' search
-    // (meaning all columns should contain search query or at least one)
-    // 'AND' by default, so changing to 'OR' by setting false here
   }
   
   onDeleteConfirm(event) {

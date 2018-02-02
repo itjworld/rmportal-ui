@@ -73,7 +73,7 @@
   vertical-align:bottom;border-bottom:2px solid #ddd;
   background-color:#b5ddf0 !important;
 }
-:host /deep/ ng2-smart-table a,a:focus, a:hover{
+:host /deep/ ng2-smart-table ng2-st-column-title  a,a:focus, a:hover{
   color: #000000 !important;
   text-decoration: none !important;
 }
@@ -190,3 +190,6 @@
 :host /deep/ ng2-smart-table ng2-smart-table-pager .ng2-smart-pagination{
   font-size: 14px  !important;
 }
+
+
+
