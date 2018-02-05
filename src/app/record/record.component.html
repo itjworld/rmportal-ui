@@ -1,18 +1,18 @@
 
 <div class="row">
                 
-                    <div class="col-md-12">
-                            <div class="col-md-6">
+                   
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                     <a href="http://127.0.0.1:8080/rmportal/api/v1/download.csv" class="excel" title="CSV"><i class="fa fa-file-text-o fa-3" aria-hidden="true"></i></a>
                                     <a href="http://127.0.0.1:8080/rmportal/api/v1/download.xls" class="excel" title="Excel"><i class="fa fa-file-excel-o fa-3" aria-hidden="true"></i></a>
                                     <a href="http://127.0.0.1:8080/rmportal/api/v1/download.pdf" class="pdf" title="pdf" target="_blank"><i class="fa fa-file-pdf-o fa-3" aria-hidden="true"></i></a>
                                     <a href="javascript:void(0)" class="printer" (click)="print()" title="Print"><i class="fa fa-print fa-3" aria-hidden="true"></i></a>
                                     <a href="javascript:void(0)" data-toggle="modal" data-target="#send-mail"  title="Email"><i class="fa fa-envelope-o fa-3" aria-hidden="true"></i></a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
                                     <input  class="search pull-right" type="text" placeholder="Search..." (keydown.enter)="onSearch($event.target.value)">
                             </div>
-                    </div>
+                   
                     <div class="col-md-12 table-responsive" id="printSectionId" >
                     <alert></alert>
                     <ng2-smart-table [settings]="settings" [source]="source" 

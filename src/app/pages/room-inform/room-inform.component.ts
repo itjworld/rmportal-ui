@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-room-inform',
@@ -11,5 +12,5 @@ export class RoomInformComponent implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

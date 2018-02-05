@@ -11,13 +11,15 @@
 }
 
 .tt{
+    transform:rotate(0deg) translate(-2px);
+    font-size: 11px;
+}
+
+.ttt{
     transform:rotate(0deg) translate(-10px);
     font-size: 11px;
 }
 
-.col-sm-6 {
-    width: 49% !important;
-}
 
 .feature-room,
 .feature-room:focus{

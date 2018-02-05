@@ -47,4 +47,8 @@ export class TablesComponent implements OnInit {
    setReference(_id:number){
     this.contactsComponent.setReference(_id);
   }
+
+  openModal(){
+    document.getElementById("feature-id").click();
+  }
 }
