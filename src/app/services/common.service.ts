@@ -169,4 +169,11 @@ export class CommonService {
             }).map((response: Response) => <any>response.json());
     }
 
+    getRoomDetailById(_id:number): Observable<any> {
+        return this._http.get(this._URL + "/api/v1/room-details", { params: {id:_id}})
+        .catch(err => {
+            return Observable.throw(err); 
+        }).map((response: Response) => <any>response.json());
+    }
+
 }

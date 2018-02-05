@@ -48,7 +48,8 @@ export class TablesComponent implements OnInit {
     this.contactsComponent.setReference(_id);
   }
 
-  openModal(){
+  openModal(_id:number){
+    this._filterService.getRoomDetails(_id);
     document.getElementById("feature-id").click();
   }
 }

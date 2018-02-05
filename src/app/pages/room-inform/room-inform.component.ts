@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import { FilterPorcessService } from '../../services/filterPorcess.service';
+
 
 @Component({
   selector: 'app-room-inform',
@@ -8,9 +10,15 @@ import {Observable} from 'rxjs/Rx';
 })
 export class RoomInformComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _filterService:FilterPorcessService) { }
 
   ngOnInit() {
   }
- 
+  get roomDetail():any{
+    return this._filterService.roomDetail;
+  }
+  
+  set roomDetail(value:any){
+    this._filterService.roomDetail=value;
+  }
 }

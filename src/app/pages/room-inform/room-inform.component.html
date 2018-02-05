@@ -6,19 +6,19 @@
                 <button type="button" class="close" data-dismiss="modal" >&times;</button>
                   <h4 class="modal-title">Room Details</h4>
              </div>
-             <div class="modal-body">
+             <div class="modal-body" *ngIf="roomDetail!= undefined">
                 <div>
-                    <div style="text-align: justify;text-justify: inter-word; font-weight: 700;">Paying Guest for Male in Near Galleria Market DLF City Phase IV, Gurgaon at ₹ 12000</div>
+                    <div style="text-align: justify;text-justify: inter-word; font-weight: 700;">Paying Guest for {{roomDetail.gender | capitalize}} in {{roomDetail.street2 | capitalize}}, {{roomDetail.location | capitalize}} at <i class="fa fa-rupee"></i>{{roomDetail.deposit}}</div>
                     <p class="landmark-loc">
                             <span><i class="fa fa-map-marker"></i></span>
-                            <span class="hostel-place">DLF City Phase III, Gurgaon</span>
-                            <span class="landmark hostel-place">DLF City Phase III</span>
+                            <span class="hostel-place">{{roomDetail.street2 | capitalize}}, {{roomDetail.location | capitalize}}</span>
+                            <span class="landmark hostel-place">{{roomDetail.street2 | capitalize}}</span>
                      </p>
                      <div class="card-text ">
                          <ul class="spl-amenities">
                             <li><i class="fa fa-wifi"></i><p>Wifi</p></li>
-                            <li><i class="fa fa-bus"></i><p>furnished</p></li>
-                            <li><i class="fa fa-minus"></i><p>AC</p></li>
+                            <li><i class="fa fa-bus"></i><p>Furnished</p></li>
+                            <li *ngIf="roomDetail.condition!= undefined" ><i class="fa fa-minus"></i><p>{{roomDetail.condition | capitalize}}</p></li>
                          </ul>
                             
                     </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-text">
                             <ul>
-                                   <li >Available for: Female</li>
+                                   <li >Available for: {{roomDetail.gender | capitalize}}</li>
                                     <li>Available: Immediate</li>
                             </ul>
                     </div>

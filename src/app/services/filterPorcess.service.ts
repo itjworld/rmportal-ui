@@ -12,6 +12,7 @@ export class FilterPorcessService{
     cardList:IFilterInformation[];
     userDetail:IEnquiry;
     information:IInfomation;
+    roomDetail:IFilterInformation;
     constructor(private _commonService:CommonService,private _loaderService: LoaderService){
         
     }
@@ -39,6 +40,11 @@ export class FilterPorcessService{
     getContactInfomation(_id:number){
         this._commonService.getContactInfomation(_id).subscribe((inform)=>this.information=inform);
     }
+
+    getRoomDetails(_id:number){
+        this._commonService.getRoomDetailById(_id).subscribe((inform)=>this.roomDetail=inform);
+    }
+
 
     
 }
