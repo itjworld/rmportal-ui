@@ -16,7 +16,7 @@ export class RentdetailComponent implements OnInit {
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
 
-  private id;number;
+  id;number;
   source:  LocalDataSource;
   constructor(private _loaderService: LoaderService,private route: ActivatedRoute,private _commonService : CommonService,private _http:Http,private popupService :PopupService) {
      this.route.params.subscribe(params => {
@@ -119,6 +119,10 @@ export class RentdetailComponent implements OnInit {
       this.source = new LocalDataSource(this.data);
       this._loaderService.display(false);
    }));
+  }
+
+  get url():string{
+    return this._commonService._URL;
   }
 
 }

@@ -141,6 +141,8 @@ export class RecordComponent {
     popupWinindow.document.close();
   } 
 
-  
+  get url():string{
+    return this._commonService._URL;
+  }
   
 }

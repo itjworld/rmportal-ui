@@ -98,4 +98,8 @@ export class MyrecordsComponent implements OnInit{
     }));
 }
 
+get url():string{
+  return this._commonService._URL;
+}
+
 }
