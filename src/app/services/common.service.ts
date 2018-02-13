@@ -103,7 +103,7 @@ export class CommonService {
         return this._http.post(this._URL + "/api/v1/room/update", mapping)
             .map((response: Response) => <boolean>response.json());
     }
-    registration(registration: String): Observable<boolean> {
+    registration(registration: String): Observable<any> {
         return this._http.post(this._URL + "/api/v1/registration", registration)
             .map((response: Response) => <boolean>response.json());
     }
