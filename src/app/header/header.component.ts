@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +11,17 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class HeaderComponent implements OnInit {
   isIn = false;   // store state
   username:String;
-  private roles:string[]=[];
   toggleState() { // click handler
       let bool = this.isIn;
       this.isIn = bool === false ? true : false; 
   }
-  constructor(private _router : Router) {
-    var result=localStorage.getItem("ROLES");
-    if(result && result!=null && result!=''){
-      this.roles=result.split(",");
+  constructor(private _router : Router,private _service:AuthenticationService) {
+    if(this._service.roles && this._service.roles.length==0){
+      var result=localStorage.getItem("ROLES");
+      if(result && result!=null && result!=''){
+        this._service.roles=result.split(",");
+      }
     }
-    
   }
 
   ngOnInit() {
@@ -43,13 +44,23 @@ export class HeaderComponent implements OnInit {
     return localStorage.getItem("user");
   }
   
-    hasRole(role:string):boolean{
-      for(let r of this.roles){
-        if(r.toUpperCase()===role.toUpperCase()){
+  hasRole(role: string): boolean {
+    console.log("in", role);
+    let userRoles;
+    if (role && role != null && role != '') {
+      userRoles = role.split(",");
+    }
+    console.log("userRoles : ", userRoles);
+    for (let r of this._service.roles) {
+      for (let ur of userRoles) {
+        if (r.toUpperCase() === ur.toUpperCase()) {
+          console.log("role : ", r);
+          console.log("ur : ", ur);
           return true;
         }
       }
-      return false;
-    }  
+    }
+    return false;
+  }  
 
 }

@@ -19,13 +19,16 @@ var users = [
 @Injectable()
 export class AuthenticationService {
   userDetail:IUserDetail;
+  roles:string[]=[];
   constructor(
     private _router: Router, private _service : CommonService,private alertService: AlertService){}
 
   logout() {
     localStorage.removeItem("user");
     localStorage.removeItem("ROLES");
+    this.roles=[];
     this._router.navigate(['home']);
+
   }
 
   login(user){
@@ -47,7 +50,11 @@ export class AuthenticationService {
        if(data['status']==200){
         localStorage.setItem("user", data['USER']);
         localStorage.setItem("ROLES", data['ROLES']);
-        this._router.navigate(['record']);
+        var result=localStorage.getItem("ROLES");
+        if(result && result!=null && result!=''){
+          this.roles=result.split(",");
+        }
+        this._router.navigate(['/']);
        }else if(data['status']==401){
           this.alertService.error(data['message']);
        }else{

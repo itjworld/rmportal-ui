@@ -33,12 +33,12 @@ export class RegistrationComponent implements OnInit {
         username:this.signupForm.value.username};
       console.log(registration);
       this._commonService.registration(registration).subscribe((result=>{
-          console.info("save");
+          console.info("save : " + result.message);
           if(result){
-            this.alertService.success("Registration successfully");
+            this.alertService.success(result.message);
          }
          else{
-           this.alertService.error("Registration failed !");
+           this.alertService.error(result.message);
             }
       }), err => this.alertService.error("Registration failed !"));
     }    

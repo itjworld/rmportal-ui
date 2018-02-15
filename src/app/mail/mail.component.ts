@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule, FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonService } from './../services/common.service';
 import { AlertService } from '../alert/alert.service';
+<<<<<<< HEAD
 import { type } from 'os';
+=======
+import { LoaderService } from '../services/loader.service';
+import {Observable} from 'rxjs/Rx';
+>>>>>>> 0396d4cf39eab764b8ddfa40bef1618167f98fbd
 
 @Component({
   selector: 'app-mail',
@@ -13,8 +18,8 @@ export class MailComponent  {
   mail : FormGroup;
   reference:String;
   type:String;
-  constructor(private _commonService : CommonService,fb: FormBuilder, private alertService: AlertService) {
-    this.mail = fb.group({
+  constructor(private _commonService : CommonService,fb: FormBuilder, private alertService: AlertService,private _loaderService: LoaderService) {
+  this.mail = fb.group({
       'to': ['', Validators.required],
       'cc': '',
       'subject':['', Validators.required],
@@ -24,14 +29,17 @@ export class MailComponent  {
 
    submitForm(){
     this.alertService.clear();
+    this._loaderService.display(true);
     if (this.mail.dirty && this.mail.valid) {
       let mailInfo:any={to:this.mail.value.to , cc:this.mail.value.cc,subject:this.mail.value.subject,
       message:this.mail.value.body,type:this.type,reference:this.reference};
       this._commonService.sendMail(mailInfo).subscribe((info=>{
         console.info("send");
         this.alertService.success("Mail Sent Successfully");
+        this._loaderService.display(false);
       }), (err => this.alertService.success("Mail Sending Failed !")));
     }
+    
   }
   reset(){
     console.log("reset");
