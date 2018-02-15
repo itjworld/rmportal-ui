@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule, FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonService } from './../services/common.service';
 import { AlertService } from '../alert/alert.service';
-<<<<<<< HEAD
-import { type } from 'os';
-=======
 import { LoaderService } from '../services/loader.service';
 import {Observable} from 'rxjs/Rx';
->>>>>>> 0396d4cf39eab764b8ddfa40bef1618167f98fbd
 
 @Component({
   selector: 'app-mail',
