@@ -15,6 +15,8 @@ export class MyrecordsComponent implements OnInit{
 
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
+
+  userEmailId:string='akk.anilkundu@gmail.com';
   
   data:any;
   source:  LocalDataSource;
@@ -24,6 +26,8 @@ export class MyrecordsComponent implements OnInit{
 
   ngOnInit() {
     this.loadData();
+    this.mSailComponent.setType("MR");
+    this.mSailComponent.setReference(this.userEmailId);
   }
 
   settings = {
@@ -91,7 +95,7 @@ export class MyrecordsComponent implements OnInit{
 
   loadData(){
     this._loaderService.display(true);
-    this._commonService.getMyRecords("akk.anilkundu@gmail.com").subscribe((result=>{
+    this._commonService.getMyRecords(this.userEmailId).subscribe((result=>{
     this.data = result.data;
     this.source = new LocalDataSource(this.data);
     this._loaderService.display(false);

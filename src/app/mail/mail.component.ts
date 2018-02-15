@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonService } from './../services/common.service';
 import { AlertService } from '../alert/alert.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-mail',
@@ -10,6 +11,8 @@ import { AlertService } from '../alert/alert.service';
 })
 export class MailComponent  {
   mail : FormGroup;
+  reference:String;
+  type:String;
   constructor(private _commonService : CommonService,fb: FormBuilder, private alertService: AlertService) {
     this.mail = fb.group({
       'to': ['', Validators.required],
@@ -23,7 +26,7 @@ export class MailComponent  {
     this.alertService.clear();
     if (this.mail.dirty && this.mail.valid) {
       let mailInfo:any={to:this.mail.value.to , cc:this.mail.value.cc,subject:this.mail.value.subject,
-      message:this.mail.value.body};
+      message:this.mail.value.body,type:this.type,reference:this.reference};
       this._commonService.sendMail(mailInfo).subscribe((info=>{
         console.info("send");
         this.alertService.success("Mail Sent Successfully");
@@ -33,5 +36,13 @@ export class MailComponent  {
   reset(){
     console.log("reset");
     document.getElementById("reset").click();
+  }
+
+  setReference(reference:string){
+    this.reference=reference;
+  }
+
+  setType(type:string){
+    this.type=type;
   }
 }

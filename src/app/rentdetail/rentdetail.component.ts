@@ -27,6 +27,8 @@ export class RentdetailComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    this.mSailComponent.setType("RD");
+    this.mSailComponent.setReference(this.id);
   }
 
   data:any;

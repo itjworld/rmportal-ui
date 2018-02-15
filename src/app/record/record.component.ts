@@ -1,4 +1,4 @@
-import { Component,ViewChild} from '@angular/core';
+import { Component,ViewChild,OnInit} from '@angular/core';
 import { CommonService } from './../services/common.service';
 import { Ng2SmartTableModule, ServerDataSource } from 'ng2-smart-table';
 import { Http } from '@angular/http';
@@ -13,7 +13,7 @@ import { PopupService } from '../popup/popup.service';
   templateUrl: './record.component.html',
   styleUrls: ['./record.component.css']
 })
-export class RecordComponent {
+export class RecordComponent implements OnInit{
 
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
@@ -31,7 +31,12 @@ export class RecordComponent {
         totalKey: 'total',
 
       });
+
+      
     
+  }
+  ngOnInit() {
+    this.mSailComponent.setType("RR");
   }
   settings = {
     tableClass:'table table-bordered',
