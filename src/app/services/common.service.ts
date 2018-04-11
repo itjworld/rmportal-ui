@@ -21,8 +21,7 @@ export class CommonService {
     address: any;
     price: number = 0;
     dispalyPrice: String;
-
-
+    
     constructor(private _http: Http) {
         this.getLocation().subscribe((locationData) => this.location = locationData);
         this.getGender().subscribe((genderData) => this.gender = genderData);
@@ -171,6 +170,13 @@ export class CommonService {
 
     getRoomDetailById(_id:number): Observable<any> {
         return this._http.get(this._URL + "/api/v1/room-details", { params: {id:_id}})
+        .catch(err => {
+            return Observable.throw(err); 
+        }).map((response: Response) => <any>response.json());
+    }
+
+    getAddressDetail(): Observable<any> {
+        return this._http.get(this._URL + "/api/v1/address/detail")
         .catch(err => {
             return Observable.throw(err); 
         }).map((response: Response) => <any>response.json());

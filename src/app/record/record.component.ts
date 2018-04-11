@@ -6,8 +6,6 @@ import { MailComponent } from '../mail/mail.component';
 import { AlertService } from '../alert/alert.service';
 import { PopupService } from '../popup/popup.service';
 
-
-
 @Component({
   selector: 'app-record',
   templateUrl: './record.component.html',
@@ -20,20 +18,12 @@ export class RecordComponent implements OnInit{
   
   data:any;
   source:  ServerDataSource;
+  addressFilter:any
+  address=0;
   constructor(private popupService :PopupService,private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
-    this.source = new ServerDataSource(this._http,
-      {
-        endPoint: this._commonService.getRecords(),
-        pagerLimitKey: "_limit",
-        pagerPageKey: "_page",
-        filterFieldKey: '_searchParam',
-        dataKey: 'data',
-        totalKey: 'total',
-
-      });
-
-      
     
+      this.getSourceFromServer();
+      this._commonService.getAddressDetail().subscribe((address)=>this.addressFilter=address);
   }
   ngOnInit() {
     this.mSailComponent.setType("RR");
@@ -148,6 +138,24 @@ export class RecordComponent implements OnInit{
 
   get url():string{
     return this._commonService._URL;
+  }
+
+  onChangeAddress(event){
+      console.log(event.target.value);
+      this.address=event.target.value;
+      this.getSourceFromServer();
+  }
+
+  getSourceFromServer(){
+    this.source = new ServerDataSource(this._http,
+      {
+        endPoint: this._commonService.getRecords()+"/"+this.address,
+        pagerLimitKey: "_limit",
+        pagerPageKey: "_page",
+        filterFieldKey: '_searchParam',
+        dataKey: 'data',
+        totalKey: 'total',
+      });
   }
   
 }

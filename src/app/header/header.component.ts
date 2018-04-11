@@ -45,17 +45,13 @@ export class HeaderComponent implements OnInit {
   }
   
   hasRole(role: string): boolean {
-    console.log("in", role);
     let userRoles;
     if (role && role != null && role != '') {
       userRoles = role.split(",");
     }
-    console.log("userRoles : ", userRoles);
-    for (let r of this._service.roles) {
+     for (let r of this._service.roles) {
       for (let ur of userRoles) {
         if (r.toUpperCase() === ur.toUpperCase()) {
-          console.log("role : ", r);
-          console.log("ur : ", ur);
           return true;
         }
       }

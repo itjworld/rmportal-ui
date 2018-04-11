@@ -236,3 +236,6 @@
 .navbar-brand-home{
   padding: 10px;
 }
+.grid-col-md-5{
+   width: 48%;
+}
