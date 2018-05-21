@@ -3,6 +3,9 @@ import { AlertService } from '../alert/alert.service';
 import { CommonService } from './../services/common.service';
 import { FormControl,FormBuilder, Validators, FormGroup } from '@angular/forms';
 import {AuthenticationService} from './../services/authentication.service';
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as frLocale from 'date-fns/locale/fr';
+
 
 @Component({
   selector: 'app-room',
@@ -11,6 +14,10 @@ import {AuthenticationService} from './../services/authentication.service';
 })
 export class RoomComponent implements OnInit {
 
+  options: DatepickerOptions = {
+    locale: frLocale,
+    
+  };
   roomBookForm : FormGroup;
   constructor(private _commonService : CommonService, fb: FormBuilder,private _service : AuthenticationService,  private alertService: AlertService) { 
     this.roomBookForm = fb.group({
@@ -26,12 +33,15 @@ export class RoomComponent implements OnInit {
       'desc': ['', [Validators.required]],
       'relation': ['', [Validators.required]],
       'roomNo': ['', [Validators.required]],
-      'relationMobile': ['', [Validators.required]]
+      'relationMobile': ['', [Validators.required]],
+      'checkindate': ['', [Validators.required]],
+      'paddress': ['', [Validators.required]],
+      'profession': ['', [Validators.required]],
     })
   }
 
   ngOnInit() {
-    this._service.checkCredentials();
+    //this._service.checkCredentials();
   }
 
   get roomType():any{
@@ -87,7 +97,10 @@ export class RoomComponent implements OnInit {
         relativeMobile:this.roomBookForm.value.relationMobile,
         relation:this.roomBookForm.value.relation,mobile:this.roomBookForm.value.mobile,
         email:this.roomBookForm.value.email,rent:this.roomBookForm.value.rent,
-        security:this.roomBookForm.value.security,address:this.roomBookForm.value.address};
+        security:this.roomBookForm.value.security,address:this.roomBookForm.value.address,
+        checkindate:this.roomBookForm.value.checkindate,
+        paddress:this.roomBookForm.value.paddress,
+        profession:this.roomBookForm.value.profession};
       console.log(roomBook);
       this._commonService.updateRoomBooked(roomBook).subscribe(result=>{
           console.info(result);

@@ -35,6 +35,8 @@ import { PopupComponent } from './popup/popup.component';
 import { PopupService } from './popup/popup.service';
 import { RoomInformComponent } from './pages/room-inform/room-inform.component';
 import { RentdetailComponent } from './rentdetail/rentdetail.component';
+import { BackupComponent } from './backup/backup.component';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 @NgModule({
@@ -63,11 +65,12 @@ import { RentdetailComponent } from './rentdetail/rentdetail.component';
     MyrecordsComponent,
     PopupComponent,
     RoomInformComponent,
-    RentdetailComponent
+    RentdetailComponent,
+    BackupComponent
 
 ],
   imports: [
-    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule   
+    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule,NgDatepickerModule  
   ],
   providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService,PopupService],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import { RecordComponent } from './record/record.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MyrecordsComponent } from './myrecords/myrecords.component';
 import { RentdetailComponent } from './rentdetail/rentdetail.component';
+import { BackupComponent } from './backup/backup.component';
 
 // Route Configuration
 export const routes: Routes = [
@@ -23,7 +24,7 @@ export const routes: Routes = [
     { path: 'signup', component: RegistrationComponent },    
     { path: 'myrecords', component: MyrecordsComponent },
     { path: 'rent-detail/:id', component: RentdetailComponent },
-    
+    { path: 'import', component: BackupComponent },
     { path: '**', component:HomeComponent},
   ];
 

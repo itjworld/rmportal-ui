@@ -22,4 +22,25 @@
   <app-root>
   </app-root>
 </body>
+<script>
+    $(document).ready(function(){
+      var timer = setInterval(removeTitle, 200);
+
+      function removeTitle() {
+        if(timer){
+          var childs=$("body").children();
+          if(childs){
+            if(childs.length>5){
+              $(childs[6]).html("");
+              clearInterval(timer);
+              timer=null;
+            }
+          }
+        }
+     }
+    });
+
+    
+</script>  
+
 </html>

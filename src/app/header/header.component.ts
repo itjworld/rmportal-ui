@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
 import {AuthenticationService} from '../services/authentication.service';
+import { CommonService } from './../services/common.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
       let bool = this.isIn;
       this.isIn = bool === false ? true : false; 
   }
-  constructor(private _router : Router,private _service:AuthenticationService) {
+  constructor(private _router : Router,private _service:AuthenticationService, private _commonService : CommonService) {
     if(this._service.roles && this._service.roles.length==0){
       var result=localStorage.getItem("ROLES");
       if(result && result!=null && result!=''){
@@ -58,5 +59,9 @@ export class HeaderComponent implements OnInit {
     }
     return false;
   }  
+
+  get url():string{
+    return this._commonService._URL;
+  }
 
 }

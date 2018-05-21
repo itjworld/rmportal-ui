@@ -28,11 +28,20 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="room number" tabindex="8" [formControl]="roomBookForm.controls['roomNo']">
-          <div *ngIf="roomBookForm.controls['roomNo'].hasError('required') && roomBookForm.controls['roomNo'].touched" class="alert alert-danger">please enter room number.</div>
-    
-       </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="roomNo" id="roomNo" class="form-control input-lg" placeholder="Room Number" tabindex="5" [formControl]="roomBookForm.controls['roomNo']">
+                <div *ngIf="roomBookForm.controls['roomNo'].hasError('required') && roomBookForm.controls['roomNo'].touched" class="alert alert-danger">please enter room number.</div>
+             </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="checkindate" id="checkindate" class="form-control input-lg" placeholder="Check-in Date (mm-dd-yyyy)" tabindex="6" [formControl]="roomBookForm.controls['checkindate']">
+                <div *ngIf="roomBookForm.controls['checkindate'].hasError('required') && roomBookForm.controls['checkindate'].touched" class="alert alert-danger">please enter room check-in date.</div>
+              </div>
+            </div>
+          </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group" [ngClass]="{'has-error':!roomBookForm.controls['fName'].valid && roomBookForm.controls['fName'].touched}">
@@ -94,15 +103,30 @@
           </div>
         </div>
         <div class="form-group">
-          <input type="text" name="address" id="address" class="form-control input-lg" placeholder="address" tabindex="8" [formControl]="roomBookForm.controls['address']">
+          <input type="text" name="address" id="address" class="form-control input-lg" placeholder="Home Address" tabindex="8" [formControl]="roomBookForm.controls['address']">
           <div *ngIf="roomBookForm.controls['address'].hasError('required') && roomBookForm.controls['address'].touched" class="alert alert-danger">please enter address.</div>
     
        </div>
+       <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="profession" id="profession" class="form-control input-lg" placeholder="Profession" tabindex="5" [formControl]="roomBookForm.controls['profession']">
+              <div *ngIf="roomBookForm.controls['profession'].hasError('required') && roomBookForm.controls['profession'].touched" class="alert alert-danger">please enter profession.</div>
+            
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="paddress" id="paddress" class="form-control input-lg" placeholder="Office/Institute Address" tabindex="6" [formControl]="roomBookForm.controls['paddress']">
+              <div *ngIf="roomBookForm.controls['paddress'].hasError('required') && roomBookForm.controls['paddress'].touched" class="alert alert-danger">please enter profession/institution address.</div>
+            
+            </div>
+          </div>
+        </div>
        <div class="form-group">
         <input type="text" name="desc" id="desc" class="form-control input-lg" placeholder="Description" tabindex="8" [formControl]="roomBookForm.controls['desc']">
-        <div *ngIf="roomBookForm.controls['desc'].hasError('required') && roomBookForm.controls['desc'].touched" class="alert alert-danger">please enter description.</div>
-  
-     </div>
+        <div *ngIf="roomBookForm.controls['desc'].hasError('required') && roomBookForm.controls['desc'].touched" class="alert alert-danger">please enter description or hobbies.</div>
+      </div>
         <hr class="colorgraph">
         <div class="row">
           <div class="col-xs-12 col-md-6"><input type="submit" [disabled]="!roomBookForm.valid" value="Save" class="btn btn-primary btn-block btn-lg" tabindex="9"></div>
