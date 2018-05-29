@@ -8,6 +8,7 @@ export interface IFilterInformation{
     roomType:number;
     occupied:number;
     condition:string;
+    roomNo:string;
     
     
 	
@@ -16,7 +17,7 @@ export interface IFilterInformation{
 export class FilterInformation implements IFilterInformation{
     
     constructor(public id:number,public rent:number,public deposit:number,public street1:string,public street2:string
-        ,public content:string,public roomType:number,public occupied:number,public condition:string){
+        ,public content:string,public roomType:number,public occupied:number,public condition:string,public roomNo:string){
         
     }
 }

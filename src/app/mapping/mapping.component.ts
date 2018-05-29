@@ -84,9 +84,8 @@ export class MappingComponent implements OnInit {
         security:this.mappingForm.value.security,desc:this.mappingForm.value.desc};
       console.log(mapping);
       this._commonService.saveMappingDetails(mapping).subscribe((mapping=>{
-          console.info("save");
-          this.alertService.success("Mapping configuration saved");
-      }), err => this.alertService.error("Mapping configuration failed !"));
+          this.alertService.success("Room Mapping configuration saved successfuly");
+      }), err => this.alertService.error("Problem exists while mapping room!"));
     }    
    }
 

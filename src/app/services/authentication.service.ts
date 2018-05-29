@@ -26,6 +26,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem("user");
     localStorage.removeItem("ROLES");
+    localStorage.removeItem("email");
     this.roles=[];
     this._router.navigate(['home']);
 
@@ -47,8 +48,10 @@ export class AuthenticationService {
     }, err => this.alertService.error("invlalid credentials !"));
     */
     this._service.login(user).subscribe((data)=>{
+      console.log(data);
        if(data['status']==200){
         localStorage.setItem("user", data['USER']);
+        localStorage.setItem("email", data['EMAIL']);
         localStorage.setItem("ROLES", data['ROLES']);
         var result=localStorage.getItem("ROLES");
         if(result && result!=null && result!=''){

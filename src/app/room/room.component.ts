@@ -101,16 +101,17 @@ export class RoomComponent implements OnInit {
         checkindate:this.roomBookForm.value.checkindate,
         paddress:this.roomBookForm.value.paddress,
         profession:this.roomBookForm.value.profession};
-      console.log(roomBook);
-      this._commonService.updateRoomBooked(roomBook).subscribe(result=>{
-          console.info(result);
+      this._commonService.updateRoomBooked(roomBook).subscribe((result=>{
+        console.info("save : " + result.message);
         if(result){
-          this.alertService.success("Room Booked Successfully");
+          this.alertService.success(result.message);
+          this.roomBookForm.reset;
+       }
+       else{
+         this.alertService.error(result.message);
           }
-        else{          
-          this.alertService.error("Room Booking failed !");
-          }
-      }, err => this.alertService.error("Room Booking failed !"));
+    }), err => this.alertService.error("Problem exists while booking room!"));
+    window.scrollTo(0, 0);
     }    
    }
 }

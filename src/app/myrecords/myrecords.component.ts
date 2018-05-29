@@ -16,7 +16,7 @@ export class MyrecordsComponent implements OnInit{
   @ViewChild(MailComponent)
   private mSailComponent:MailComponent;
 
-  userEmailId:string='akk.anilkundu@gmail.com';
+  userEmailId:string=localStorage.getItem("email");
   
   data:any;
   source:  LocalDataSource;

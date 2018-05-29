@@ -47,7 +47,11 @@ export class RecordComponent implements OnInit{
       }
       ,
     columns: {
-      
+      id: {
+        title: 'Sr. No.',
+        filter: false,
+        
+      },
       roomNo: {
         title: 'Room No',
         filter: false,
@@ -75,6 +79,10 @@ export class RecordComponent implements OnInit{
       },
       security: {
         title: 'Security',
+        filter: false,
+      },
+      checkindate: {
+        title: 'Check_In_Date',
         filter: false,
       },
     },
