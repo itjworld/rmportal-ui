@@ -37,6 +37,7 @@ export class RoomComponent implements OnInit {
       'checkindate': ['', [Validators.required]],
       'paddress': ['', [Validators.required]],
       'profession': ['', [Validators.required]],
+      'dob': ['', [Validators.required]],
     })
   }
 
@@ -100,7 +101,7 @@ export class RoomComponent implements OnInit {
         security:this.roomBookForm.value.security,address:this.roomBookForm.value.address,
         checkindate:this.roomBookForm.value.checkindate,
         paddress:this.roomBookForm.value.paddress,
-        profession:this.roomBookForm.value.profession};
+        profession:this.roomBookForm.value.profession,dob:this.roomBookForm.value.dob};
       this._commonService.updateRoomBooked(roomBook).subscribe((result=>{
         console.info("save : " + result.message);
         if(result){

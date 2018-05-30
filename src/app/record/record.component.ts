@@ -44,14 +44,13 @@ export class RecordComponent implements OnInit{
     pager:{
          display:true,
          perPage:10
-      }
-      ,
-    columns: {
-      id: {
-        title: 'Sr. No.',
-        filter: false,
-        
       },
+    columns: {
+      // id: {
+      //   title: 'Sr. No.',
+      //   filter: false,
+        
+      // },
       roomNo: {
         title: 'Room No',
         filter: false,
@@ -70,7 +69,7 @@ export class RecordComponent implements OnInit{
         filter: false,
       },
       rent: {
-        title: 'Rent',
+        title: 'Room Rent',
         filter: false,
         type:'html',
         valuePrepareFunction: (cell,row) => { 
