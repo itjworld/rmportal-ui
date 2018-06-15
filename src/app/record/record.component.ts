@@ -1,7 +1,7 @@
 import { Component,ViewChild,OnInit} from '@angular/core';
 import { CommonService } from './../services/common.service';
 import { Ng2SmartTableModule, ServerDataSource } from 'ng2-smart-table';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { MailComponent } from '../mail/mail.component';
 import { AlertService } from '../alert/alert.service';
 import { PopupService } from '../popup/popup.service';
@@ -20,7 +20,7 @@ export class RecordComponent implements OnInit{
   source:  ServerDataSource;
   addressFilter:any
   address=0;
-  constructor(private popupService :PopupService,private _commonService : CommonService,private _http:Http,private alertService: AlertService) {
+  constructor(private popupService :PopupService,private _commonService : CommonService,private _http:HttpClient,private alertService: AlertService) {
     
       this.getSourceFromServer();
       this._commonService.getAddressDetail().subscribe((address)=>this.addressFilter=address);

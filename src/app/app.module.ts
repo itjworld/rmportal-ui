@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -70,7 +70,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 
 ],
   imports: [
-    BrowserModule,FormsModule,HttpModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule,NgDatepickerModule  
+    BrowserModule,FormsModule,HttpClientModule, ReactiveFormsModule,appRouterModule,Ng2SmartTableModule,NgDatepickerModule  
   ],
   providers: [FilterPorcessService,CommonService,AuthenticationService, AlertService,LoaderService,PopupService],
   bootstrap: [AppComponent],

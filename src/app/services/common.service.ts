@@ -10,8 +10,8 @@ import { IUserDetail } from '../beans/userdetail';
 
 @Injectable()
 export class CommonService {
-  // _URL:string="http://wavespgrooms-env.vnumnwmdc2.us-east-2.elasticbeanstalk.com";
-    _URL: string = "http://localhost:8888/rmportal";
+   _URL:string="http://itj-env.9j3sp5mx8e.ap-south-1.elasticbeanstalk.com";
+   // _URL: string = "http://localhost:8080/rmportal";
 
     location: IDomain[];
     gender: IDomain[];
