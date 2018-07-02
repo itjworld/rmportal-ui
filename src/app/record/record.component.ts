@@ -17,11 +17,11 @@ export class RecordComponent implements OnInit{
   private mSailComponent:MailComponent;
   
   data:any;
+  sr : number = 0;
   source:  ServerDataSource;
   addressFilter:any
   address=0;
   constructor(private popupService :PopupService,private _commonService : CommonService,private _http:HttpClient,private alertService: AlertService) {
-    
       this.getSourceFromServer();
       this._commonService.getAddressDetail().subscribe((address)=>this.addressFilter=address);
   }
@@ -46,11 +46,14 @@ export class RecordComponent implements OnInit{
          perPage:10
       },
     columns: {
-      // id: {
-      //   title: 'Sr. No.',
-      //   filter: false,
+      id: {
+        title: '',
+        filter: false,
+        valuePrepareFunction: () => { 
+          return this.sr +=1;
+        },
         
-      // },
+      },
       roomNo: {
         title: 'Room No',
         filter: false,
@@ -82,6 +85,10 @@ export class RecordComponent implements OnInit{
       },
       checkindate: {
         title: 'Check_In_Date',
+        filter: false,
+      },
+      active: {
+        title: 'Status',
         filter: false,
       },
     },

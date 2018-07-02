@@ -31,6 +31,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("ROLES");
+    localStorage.removeItem("email");
     this._router.navigate(['home']);
   }
 
@@ -46,6 +48,9 @@ export class HeaderComponent implements OnInit {
   }
   
   hasRole(role: string): boolean {
+    if (localStorage.getItem("user") === null){     
+      return false;
+    }
     let userRoles;
     if (role && role != null && role != '') {
       userRoles = role.split(",");

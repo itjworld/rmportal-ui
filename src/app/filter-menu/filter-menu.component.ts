@@ -13,7 +13,7 @@ import { LoaderService } from '../services/loader.service';
   styleUrls: ['./filter-menu.component.css']
 })
 export class FilterMenuComponent {
-  min:number=2000;
+  min:number=10000;
   max:number=30000;
   step:number=1000;
   
