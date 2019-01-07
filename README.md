@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Troubleshoothing
   If you face completer related issues then install completer by executive below mentioned command :
-  npm install ng2-completer --save-dev
+  npm install ng2-completer --save-dev..... 2) update package.json with ^ in cli config like "@angular/cli": "^1.7.4"
 
 ## Created by
  Anil Kumar & Ashish Jaiswal
