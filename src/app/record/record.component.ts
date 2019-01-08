@@ -46,12 +46,12 @@ export class RecordComponent implements OnInit{
          perPage:10
       },
     columns: {
-      id: {
+      srNo: {
         title: '',
         filter: false,
-        valuePrepareFunction: () => { 
+        /*valuePrepareFunction: () => { 
           return this.sr +=1;
-        },
+        },*/
         
       },
       roomNo: {
