@@ -59,7 +59,7 @@ export class RecordComponent implements OnInit{
         filter: false,
         
       },
-      fName: {
+      name: {
         title: 'Name',
         filter: false,
       },
@@ -83,16 +83,16 @@ export class RecordComponent implements OnInit{
         title: 'Security',
         filter: false,
       },
+      elctricityPaid: {
+        title: 'Electricity',
+        filter: false,
+      },
       checkindate: {
         title: 'Check_In_Date',
         filter: false,
-      },
-      active: {
-        title: 'Status',
-        filter: false,
-      },
-    },
-  };
+      }
+    }
+  }
 
  onSearch(query: string = '') {
     this.source.setFilter([{
@@ -105,6 +105,7 @@ export class RecordComponent implements OnInit{
   }
   
   onDeleteConfirm(event) {
+    console.log("delete");
     this.alertService.clear();
     var that=this;
     this.popupService.confirmThis({body:"Are you sure you want to delete?",header:'Alert'
@@ -129,7 +130,7 @@ export class RecordComponent implements OnInit{
     this.popupService.confirmThis({body:"Are you sure you want to update?",header:'Alert'
     ,color:'#31b0d5',cancelBtnClass:'btn-primary',confirmBtnClass:'btn-success',
     modalSizeClass:'modal-sm'},function(){
-      console.log("delete"+that);
+      console.log("save"+that);
       that._commonService.updateRecords(event.newData).subscribe((info=>{
         console.info("updated : " + info.body);
         event.confirm.resolve(event.newData);

@@ -22,7 +22,7 @@
                     <div class="col-md-12 table-responsive" id="printSectionId" >
                     <alert></alert>
                     <ng2-smart-table [settings]="settings" [source]="source" 
-                    (editConfirm)="onSaveConfirm($event)"></ng2-smart-table>
+                    (editConfirm)="onSaveConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
                     </div>    
         </div>
         
