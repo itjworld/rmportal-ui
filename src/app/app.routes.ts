@@ -10,6 +10,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MyrecordsComponent } from './myrecords/myrecords.component';
 import { RentdetailComponent } from './rentdetail/rentdetail.component';
 import { BackupComponent } from './backup/backup.component';
+import { MonthRecordsComponent } from './month-records/month-records.component';
 
 // Route Configuration
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
     { path: 'record', component: RecordComponent },
     { path: 'signup', component: RegistrationComponent },    
     { path: 'myrecords', component: MyrecordsComponent },
+    { path: 'monthrecords', component: MonthRecordsComponent },
     { path: 'rent-detail/:id', component: RentdetailComponent },
     { path: 'import', component: BackupComponent },
     { path: '**', component:HomeComponent},

@@ -38,6 +38,7 @@ import { RoomInformComponent } from './pages/room-inform/room-inform.component';
 import { RentdetailComponent } from './rentdetail/rentdetail.component';
 import { BackupComponent } from './backup/backup.component';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { MonthRecordsComponent } from './month-records/month-records.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     PopupComponent,
     RoomInformComponent,
     RentdetailComponent,
-    BackupComponent
+    BackupComponent,
+    MonthRecordsComponent
 
 ],
   imports: [

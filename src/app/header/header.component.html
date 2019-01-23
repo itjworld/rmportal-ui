@@ -28,6 +28,7 @@
                     <li *ngIf="hasRole('ADMIN')"><a [routerLink]="['/query']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Execute Query</a></li>
                     <li *ngIf="hasRole('SUPER_USER,ADMIN')"><a [routerLink]="['/record']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Records</a></li>
                     <li *ngIf="hasRole('USER')"><a [routerLink]="['/myrecords']" data-toggle="collapse" data-target="#headerNavbar" target="_self">My Records</a></li>
+                    <li *ngIf="hasRole('SUPER_USER,ADMIN')"><a [routerLink]="['/monthrecords']" data-toggle="collapse" data-target="#headerNavbar" target="_self">Month Records</a></li>
                     <li *ngIf="hasRole('SUPER_USER,ADMIN')"><a href="{{url}}/download/bk" data-toggle="collapse" data-target="#headerNavbar" target="_self">Backup</a></li>
                     <li *ngIf="hasRole('SUPER_USER,ADMIN')"><a href="{{url}}/clearstatics" data-toggle="collapse" data-target="#headerNavbar" target="_self">Update Cache</a></li>
                     <li><a href="javascript:void(0)" (click)="logout()" data-toggle="collapse" data-target="#headerNavbar" target="_self">Logout</a></li>

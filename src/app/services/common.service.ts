@@ -106,6 +106,10 @@ export class CommonService {
         return this._http.post(this._URL + "/api/v1/registration", registration)
             .map((response: Response) => <boolean>response.json());
     }
+    insertMonthRecords(): Observable<any> {
+        return this._http.get(this._URL + "/api/v1/month/records/insert")
+            .map((response: Response) => <boolean>response.json());
+    }
     getRecords(): string {
         return this._URL + "/api/v1/records";
     }
